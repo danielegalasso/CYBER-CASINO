@@ -1,0 +1,68 @@
+<body>
+    
+
+<div class='container' id="t">
+    <section class="parallax" id ='sec'>
+        
+        
+
+        <img src="../../assets/allElements/1.png" id="roulette">
+        
+        <img src="../../assets/allElements/3.png" id="sloth">
+        <img src="../../assets/allElements/4.png" id="4">
+        <img src="../../assets/allElements/5.png" id="5">
+        <img src="../../assets/allElements/6.png" id="6">
+        <img src="../../assets/allElements/7.png" id="7">
+
+        <img src="../../assets/allElements/9.png" id="9">
+        <img src="../../assets/allElements/10.png" id="10">
+        <img src="../../assets/allElements/12.png" id="12">
+        <img src="../../assets/allElements/13.png" id="13">
+
+        <img src="../../assets/allElements/15.png" id="15">
+        <img src="../../assets/allElements/16.png" id="16">
+        <img src="../../assets/allElements/17.png" id="17">
+        <img src="../../assets/allElements/11.png" id="11">
+        <img src="../../assets/allElements/18.png" id="18">
+        <img src="../../assets/allElements/19.png" id="19">
+
+        <img src="../../assets/allElements/21.png" id="21">
+        <img src="../../assets/allElements/22.png" id="22">
+        <img src="../../assets/allElements/23.png" id="23">
+
+        <img src="../../assets/allElements/button.png" id="button" role="button" (click)="onButtonClick()">
+       
+
+        
+
+
+    </section>
+
+    
+<div class="container1">
+    <div class="leaderboard">
+        <div class="head">
+            <i class="fas fa-crown"></i>
+            <h1>Leaderboard</h1>
+        </div>
+        <div class="body">
+            <li *ngFor="let user of users">
+                <mark>{{ user.name }}</mark>
+                <small>{{ user.score }}</small>
+              </li>
+        </div>
+    </div>
+</div>
+
+
+    
+
+    
+
+
+</div>
+
+
+
+  
+</body>

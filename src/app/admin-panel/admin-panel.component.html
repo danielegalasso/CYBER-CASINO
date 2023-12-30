@@ -1,0 +1,49 @@
+
+<body>
+  <form>
+    <div class="mb-3 row">
+      <div class="col-xs-3 col-sm-auto">
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1">Search for a person:</span>
+          <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <table class="table table-striped" style="margin-bottom: 60vh;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Satus</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (person of people$ | async; track person.name; let i = $index) {
+        <tr>
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            <ngb-highlight [result]="person.name" [term]="filter.value" />
+          </td>
+          <td>
+            
+            <div *ngIf="person.banned == false; else isBanned">   
+              <button type="button" class="btn btn-success" (click)="toggleStatus(person)">Active</button>
+            </div>
+            
+            <ng-template #isBanned>
+              <button type="button" class="btn btn-danger"  (click)="toggleStatus(person)">Banned</button>
+            </ng-template>
+          
+          </td>
+          
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4" style="text-align: center">No people found</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</body>

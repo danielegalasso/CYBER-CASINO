@@ -1,0 +1,115 @@
+
+body{
+    background-color: rgba(255, 255, 255, 0.0); /* Imposta l'opacità desiderata (da 0 a 1) */
+    overflow: hidden; /* Nasconde l'overflow orizzontale */
+}
+
+.parallax{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+
+
+#text{
+    position: absolute;
+    font-size: 5em;
+    color: white;
+}
+
+.parallax img{
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+
+
+}
+
+
+
+
+
+
+
+
+/* container */
+.container1 {
+	max-width: 300px;
+    width: 20vw;
+	height: auto;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+	position: absolute;
+	top: 18vh;
+	left: 6vw;
+	transform: translate(-50%, -50%);
+    transform: scale(90%);
+	z-index: 1;
+	overflow: hidden;
+}
+
+/* leaderboard */
+.leaderboard {
+	background-color: rgba(0, 0, 0, 0.4);
+
+}
+
+/* head */
+.leaderboard .head {
+	padding: 20px 16px;
+	color: snow;
+	font-size: 20px;
+	text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.leaderboard .head h1 {
+	display: inline-block;
+	margin-left: 4px;
+    font-size: 18px;
+}
+
+
+
+
+/* body */
+.leaderboard .body {
+	color: snow;
+	font-size: 16px;
+}
+
+.leaderboard li {
+	padding: 16px;
+	display: flex;
+}
+.leaderboard li mark {
+	flex-grow: 1;
+	color: snow;
+	background-color: transparent;
+
+}
+
+.leaderboard li:nth-child(1) {
+	background: #fa6855;
+    background-color: rgba(158, 0, 0, 0.6);
+
+}
+.leaderboard li:nth-child(2) {
+	background: #e0574f;
+    background-color: rgba(156, 0, 65, 0.4);
+}
+.leaderboard li:nth-child(3) {
+	background: #d7514d;
+    background-color: rgba(152, 0, 112, 0.3);
+}
+.leaderboard li:nth-child(4) {
+	background: #cd4b4b;
+    background-color: rgba(152, 0, 182, 0.2);
+}
+.leaderboard li:nth-child(5) {
+	background: #c24448;
+    background-color: rgba(152, 0, 220, 0.1);
+}

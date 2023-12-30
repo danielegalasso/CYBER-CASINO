@@ -3,16 +3,47 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './header/header.component';
+import { ComplexImageComponent } from './complex-image/complex-image.component';
+import { GamesGridComponent } from './games-grid/games-grid.component';
+import { FooterComponent } from './footer/footer.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { HomeModuleComponent } from './home-module/home-module.component';
+import { AdminModuleComponent } from './admin-module/admin-module.component';
+import { DecimalPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
+import { FreeSpinComponent } from './free-spin/free-spin.component';
+import { SlotErnestoComponent } from './slot-ernesto/slot-ernesto.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    ComplexImageComponent,
+    GamesGridComponent,
+    AdminPanelComponent,
+    FooterComponent,
+    HomeModuleComponent,
+    AdminModuleComponent,
+    FreeSpinComponent,
+    SlotErnestoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+    NgbModule,
+    AppRoutingModule,
+    DecimalPipe,
+    AsyncPipe,
+    ReactiveFormsModule,
+    NgbHighlight
   ],
-  providers: [],
+  providers: [DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
