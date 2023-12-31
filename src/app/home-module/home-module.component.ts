@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DataService } from '../service/data.service';
+
 
 @Component({
   selector: 'app-home-module',
@@ -15,12 +14,6 @@ export class HomeModuleComponent {
   }
 
 
-  constructor(private modalService: NgbModal, public dataService: DataService) {
-    
-  }
-
-  public open(modal: any): void {
-    this.modalService.open(modal);
-  }
+  
 
 }
