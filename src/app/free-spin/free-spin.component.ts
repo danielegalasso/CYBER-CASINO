@@ -70,7 +70,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
   ang = 0; // Angle in radians
   lastSelection;
 
-
+  showCongratulations = false;
 
   createWheel() {
     this.ctx = this.wheel.nativeElement.getContext('2d');
@@ -129,6 +129,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     this.spin.nativeElement.textContent = !this.angVel ? 'spin' : sector.label;
   }
 
+  bonusUscito : string;
   frame() {
     if (!this.angVel) return;
     // Modifica: ferma la ruota quando raggiunge la destinazione
@@ -136,6 +137,12 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
       this.winFineSound.nativeElement.play();
       this.angVel = 0;
       this.ang += 0.09;
+
+      //calcoliamoci il bonus vincente tramite l'indiceDiDestinazione
+      this.bonusUscito = this.sectors[this.destinationIndex].label;
+
+      // Mostriamo il messaggio di congratulazioni
+      this.showCongratulations = true;
     }
 
     if (this.angVel >= 0.0028) {

@@ -5,6 +5,16 @@
   <audio id="winFineSound" #winFineSound>
     <source src="/assets/soundDailySpin/winFine.mp3" type="audio/mp3">
   </audio>
+
 	<canvas #wheel id="wheel" width="500" height="500"></canvas>
 	<div #spin id="spin" (click)="spinner()">SPIN</div>
+</div>
+
+<div *ngIf="showCongratulations" class="congratulations-message">
+    <ng-container *ngIf="bonusUscito === 'Niente'; else congratulations">
+      Ritenta domani, sarai più fortunato!
+    </ng-container>
+    <ng-template #congratulations>
+      Congratulazioni, hai vinto {{ bonusUscito }} euro!
+    </ng-template>
 </div>
