@@ -10,7 +10,7 @@ import {
 import { DataService } from '../service/data.service';
 
 //const COLORS = ['#f82', '#0bf', '#fb0', '#0fb', '#b0f', '#f0b', '#bf0'];
-const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];  
+const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
 
 @Component({
   selector: 'app-free-spin',
@@ -30,7 +30,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
   ngAfterViewInit(): void {
     this.createWheel();
   }
-  
+
   @Input() set options(values: string[]) {
     console.log('Values', values);
     this.sectors = values.map((opts, i) => {
@@ -46,6 +46,8 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
   }
   @ViewChild('wheel') wheel: ElementRef<HTMLCanvasElement>;
   @ViewChild('spin') spin: ElementRef;
+  @ViewChild('wheelSound') wheelSound: ElementRef<HTMLAudioElement>;
+  @ViewChild('winFineSound') winFineSound: ElementRef<HTMLAudioElement>;
   currentOptionIndex: number;
 
 
@@ -68,7 +70,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
   ang = 0; // Angle in radians
   lastSelection;
 
-  
+
 
   createWheel() {
     this.ctx = this.wheel.nativeElement.getContext('2d');
@@ -120,9 +122,9 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
       this.playWheelSound();
     }
     const sector = this.sectors[index];
-    //this.spin.nativeElement.style.background = sector.color;
+    this.spin.nativeElement.style.background = sector.color;
     this.spin.nativeElement.style.background = COLORS[index % COLORS.length];
-    
+
     this.ctx.canvas.style.transform = `rotate(${this.ang - this.PI / 2}rad)`;
     this.spin.nativeElement.textContent = !this.angVel ? 'spin' : sector.label;
   }
@@ -131,13 +133,13 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     if (!this.angVel) return;
     // Modifica: ferma la ruota quando raggiunge la destinazione
     if (this.getIndex() == this.destinationIndex && Math.abs(this.angVel) < 0.0027) {
-      //this.winFineSound.nativeElement.play();
+      this.winFineSound.nativeElement.play();
       this.angVel = 0;
       this.ang += 0.09;
     }
 
     if (this.angVel >= 0.0028) {
-      this.angVel *= this.friction; // Decrement velocity by friction 
+      this.angVel *= this.friction; // Decrement velocity by friction
     }
     else {  //verso la fine la decremento di meno altrimenti ci metterebbe anni
       this.angVel *= 0.9996;
@@ -152,9 +154,9 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   playWheelSound() {
-    //if (this.wheelSound && this.wheelSound.nativeElement.readyState === HTMLMediaElement.HAVE_ENOUGH_DATA) {
-      //this.wheelSound.nativeElement.currentTime = 0; // Riavvolgi l'audio
-      //this.wheelSound.nativeElement.play();
-    //}
+    if (this.wheelSound && this.wheelSound.nativeElement.readyState === HTMLMediaElement.HAVE_ENOUGH_DATA) {
+      this.wheelSound.nativeElement.currentTime = 0; // Riavvolgi l'audio
+      this.wheelSound.nativeElement.play();
+    }
   }
 }
