@@ -23,9 +23,15 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     this.engine();
   }
 
+  lastSpinDate: Date;
   ngOnInit() {
     // Initial rotation
     // Start engine
+
+    //localStorage.clear();   DECOMMENTARE PER PROVARE AD OGNI AVVIO
+    // Carica la data dell'ultimo spin da LocalStorage
+    const lastSpinDateString = localStorage.getItem('lastSpinDate');
+    this.lastSpinDate = lastSpinDateString ? new Date(lastSpinDateString) : null;
   }
   ngAfterViewInit(): void {
     this.createWheel();
@@ -86,9 +92,26 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
   }
 
   spinner() {
-    this.destinationIndex = 3;
+    // Verifica se è possibile effettuare uno spin oggi
+    if (this.canSpinToday()) {
+      this.destinationIndex = 3;
 
-    if (!this.angVel) this.angVel = this.rand(0.25, 0.35);
+      if (!this.angVel) this.angVel = this.rand(0.25, 0.35);
+    } else {
+      // Gestisci il caso in cui lo spin non è consentito oggi
+      console.log('Non è possibile effettuare uno spin oggi.');
+    }
+  }
+
+  canSpinToday(): boolean {
+    // Verifica se è passato almeno un giorno dall'ultimo spin
+    const today = new Date();
+    return !this.lastSpinDate || today.getDate() !== this.lastSpinDate.getDate();
+  }
+
+  saveLastSpinDate() {
+    // Salva la data dell'ultimo spin in LocalStorage
+    localStorage.setItem('lastSpinDate', this.lastSpinDate.toISOString());
   }
 
   getIndex = () =>
@@ -143,6 +166,11 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
 
       // Mostriamo il messaggio di congratulazioni
       this.showCongratulations = true;
+
+      if (!this.lastSpinDate) {
+        this.lastSpinDate = new Date();
+        this.saveLastSpinDate();
+      }
     }
 
     if (this.angVel >= 0.0028) {
