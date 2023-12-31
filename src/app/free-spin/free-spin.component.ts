@@ -91,6 +91,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     this.rotate(true);
   }
 
+  noSpinToday = false;
   spinner() {
     // Verifica se è possibile effettuare uno spin oggi
     if (this.canSpinToday()) {
@@ -100,6 +101,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     } else {
       // Gestisci il caso in cui lo spin non è consentito oggi
       console.log('Non è possibile effettuare uno spin oggi.');
+      this.noSpinToday = true;
     }
   }
 

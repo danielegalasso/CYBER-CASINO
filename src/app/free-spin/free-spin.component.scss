@@ -53,9 +53,15 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 /* Aggiungi questo stile se desideri un effetto hover */
 .congratulations-message:hover {
   background-color: #2b1d6b; /* Cambia il colore in blu al passaggio del mouse */
+}
+
+.error-message {
+  font-size: 18px;
+  color: red;
+  margin-top: 10px;
+  text-align: center;
 }
 
