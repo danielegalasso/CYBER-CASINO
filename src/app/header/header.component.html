@@ -9,13 +9,13 @@
   <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
     <ul class="navbar-nav"> 
       <li class="nav-item mr-3">
-        <a class="nav-link" href="" (click)="selectNavItem('Games')" [ngClass]="{'selected': selectedNavItem === 'Games'}">Games</a>
+        <a class="nav-link" [routerLink]="['/']" (click)="selectNavItem('Games')" [ngClass]="{'selected': selectedNavItem === 'Games'}">Games</a>
       </li>
       <li class="nav-item mr-3">
-        <a class="nav-link" href="/bonus" (click)="selectNavItem('Bonus')" [ngClass]="{'selected': selectedNavItem === 'Bonus'}">Bonus</a>
+        <a class="nav-link"  [routerLink]="['/bonus']" (click)="selectNavItem('Bonus')" [ngClass]="{'selected': selectedNavItem === 'Bonus'}">Bonus</a>
       </li>
       <li class="nav-item mr-3">
-        <a class="nav-link" href="" (click)="selectNavItem('FAQ')" [ngClass]="{'selected': selectedNavItem === 'FAQ'}">FAQ</a>
+        <a class="nav-link" [routerLink]="['/']" (click)="selectNavItem('FAQ')" [ngClass]="{'selected': selectedNavItem === 'FAQ'}">FAQ</a>
       </li>
     </ul>
   </div>
