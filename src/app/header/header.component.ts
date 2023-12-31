@@ -41,4 +41,9 @@ export class HeaderComponent {
     this.isLoggedIn = false;
   }
 
+  onFormSubmit(event: Event) {
+    // Previeni l'azione predefinita del form
+    event.preventDefault();
+  }
+
 }
