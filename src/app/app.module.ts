@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 import { FreeSpinComponent } from './free-spin/free-spin.component';
 import { SlotErnestoComponent } from './slot-ernesto/slot-ernesto.component';
+import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { SlotErnestoComponent } from './slot-ernesto/slot-ernesto.component';
     HomeModuleComponent,
     AdminModuleComponent,
     FreeSpinComponent,
-    SlotErnestoComponent
+    SlotErnestoComponent,
+    BonusModuleComponent
   ],
   imports: [
     BrowserModule,

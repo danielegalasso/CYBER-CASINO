@@ -1,11 +1,5 @@
 
-<div *ngIf="isFreeSpinButtonClicked == false; else freeSpin">
-    <app-complex-image (changeView)="onChangeView()"></app-complex-image>
-  </div>
-  <ng-template #freeSpin>
-    <div style="display: flex; justify-content: center; align-items: center">
-      <app-free-spin [options]="dataService.option$ | async"></app-free-spin>
-    </div>
-  </ng-template>
+<app-complex-image></app-complex-image>
+
   <app-games-grid></app-games-grid>
 
