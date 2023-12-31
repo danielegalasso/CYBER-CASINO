@@ -15,7 +15,7 @@
         <a class="nav-link"  [routerLink]="['/bonus']" (click)="selectNavItem('Bonus')" [ngClass]="{'selected': selectedNavItem === 'Bonus'}">Bonus</a>
       </li>
       <li class="nav-item mr-3">
-        <a class="nav-link" [routerLink]="['/']" (click)="selectNavItem('FAQ')" [ngClass]="{'selected': selectedNavItem === 'FAQ'}">FAQ</a>
+        <a class="nav-link" [routerLink]="['/faq']" (click)="selectNavItem('FAQ')" [ngClass]="{'selected': selectedNavItem === 'FAQ'}">FAQ</a>
       </li>
     </ul>
   </div>
@@ -24,7 +24,7 @@
 
     <div *ngIf="isLoggedIn; else notLoggedInTemplate">
       
-      <button *ngIf="isAdmin" class="btn btn-warning my-2 my-sm-0 mr-2" id = 'adminButton' routerLink='/admin'>Admin Panel</button>
+      <button *ngIf="isAdmin" class="btn btn-warning my-2 my-sm-0 mr-2" id = 'adminButton' [routerLink]="['/admin']">Admin Panel</button>
       
       <button class="btn btn-outline-danger my-2 my-sm-0 mr-2" type="submit" (click)="signOut()">Sign Out</button>
 

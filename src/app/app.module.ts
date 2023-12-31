@@ -10,7 +10,6 @@ import { GamesGridComponent } from './games-grid/games-grid.component';
 import { FooterComponent } from './footer/footer.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeModuleComponent } from './home-module/home-module.component';
-import { AdminModuleComponent } from './admin-module/admin-module.component';
 import { DecimalPipe } from '@angular/common';
 import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +17,7 @@ import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 import { FreeSpinComponent } from './free-spin/free-spin.component';
 import { SlotErnestoComponent } from './slot-ernesto/slot-ernesto.component';
 import { BonusModuleComponent } from './bonus-module/bonus-module.component';
+import { FAQComponent } from './faq/faq.component';
 
 
 @NgModule({
@@ -29,10 +29,10 @@ import { BonusModuleComponent } from './bonus-module/bonus-module.component';
     AdminPanelComponent,
     FooterComponent,
     HomeModuleComponent,
-    AdminModuleComponent,
     FreeSpinComponent,
     SlotErnestoComponent,
-    BonusModuleComponent
+    BonusModuleComponent,
+    FAQComponent
   ],
   imports: [
     BrowserModule,

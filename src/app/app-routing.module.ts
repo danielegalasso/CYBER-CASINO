@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminModuleComponent } from './admin-module/admin-module.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeModuleComponent } from './home-module/home-module.component';
 import { BonusModuleComponent } from './bonus-module/bonus-module.component';
+import { FAQComponent } from './faq/faq.component';
 
 const routes: Routes = [
   {
@@ -10,13 +11,18 @@ const routes: Routes = [
     path:''
   },
   {
-    component:AdminModuleComponent,
+    component:AdminPanelComponent,
     path:'admin'
   },
   {
     component:BonusModuleComponent,
     path:'bonus'
+  },
+  {
+    component:FAQComponent,
+    path:'faq' 
   }
+
 
 ];
 

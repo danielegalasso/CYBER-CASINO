@@ -18,6 +18,12 @@ export class HeaderComponent {
       if (event.url === '/bonus' && this.selectedNavItem !== 'Bonus') {
         this.selectedNavItem = 'Bonus';
       }
+      if (event.url === '/faq' && this.selectedNavItem !== 'FAQ') {
+        this.selectedNavItem = 'FAQ';
+      }
+      if (event.url === '/admin') {
+        this.selectedNavItem = '';
+      }
     });
   }
 
