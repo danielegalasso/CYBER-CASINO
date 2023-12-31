@@ -2,7 +2,7 @@
 
 <body>
 <nav class="navbar navbar-expand-sm navbar-dark shadow-5-strong">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" [routerLink]="['/']">
     <img src="../../assets/img/3-1.png" alt="Logo" style="max-height: 40px;">
   </a>
   
@@ -15,16 +15,17 @@
         <a class="nav-link"  [routerLink]="['/bonus']" (click)="selectNavItem('Bonus')" [ngClass]="{'selected': selectedNavItem === 'Bonus'}">Bonus</a>
       </li>
       <li class="nav-item mr-3">
-        <a class="nav-link" [routerLink]="['/']" (click)="selectNavItem('FAQ')" [ngClass]="{'selected': selectedNavItem === 'FAQ'}">FAQ</a>
+        <a class="nav-link" [routerLink]="['/faq']" (click)="selectNavItem('FAQ')" [ngClass]="{'selected': selectedNavItem === 'FAQ'}">FAQ</a>
       </li>
+
     </ul>
   </div>
 
-  <form class="form-inline ml-auto">
+  <form class="form-inline ml-auto" (submit)="onFormSubmit($event)">
 
     <div *ngIf="isLoggedIn; else notLoggedInTemplate">
       
-      <button *ngIf="isAdmin" class="btn btn-warning my-2 my-sm-0 mr-2" id = 'adminButton' routerLink='/admin'>Admin Panel</button>
+      <button *ngIf="isAdmin" class="btn btn-warning my-2 my-sm-0 mr-2" id = 'adminButton' [routerLink]="['/admin']">Admin Panel</button>
       
       <button class="btn btn-outline-danger my-2 my-sm-0 mr-2" type="submit" (click)="signOut()">Sign Out</button>
 

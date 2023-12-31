@@ -18,6 +18,12 @@ export class HeaderComponent {
       if (event.url === '/bonus' && this.selectedNavItem !== 'Bonus') {
         this.selectedNavItem = 'Bonus';
       }
+      if (event.url === '/faq' && this.selectedNavItem !== 'FAQ') {
+        this.selectedNavItem = 'FAQ';
+      }
+      if (event.url === '/admin') {
+        this.selectedNavItem = '';
+      }
     });
   }
 
@@ -33,6 +39,11 @@ export class HeaderComponent {
   signOut() {
     // Imposta isLoggedIn su false quando il pulsante viene cliccato
     this.isLoggedIn = false;
+  }
+
+  onFormSubmit(event: Event) {
+    // Previeni l'azione predefinita del form
+    event.preventDefault();
   }
 
 }
