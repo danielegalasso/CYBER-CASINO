@@ -18,6 +18,7 @@ import { FreeSpinComponent } from './free-spin/free-spin.component';
 import { SlotErnestoComponent } from './slot-ernesto/slot-ernesto.component';
 import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
+import { SlotMachineComponent } from "./slot-machine/slot-machine.component";
 import { LoginModuleComponent } from './login-module/login-module.component';
 import { RegisterModuleComponent } from './register-module/register-module.component';
 
@@ -35,8 +36,7 @@ import { RegisterModuleComponent } from './register-module/register-module.compo
     SlotErnestoComponent,
     BonusModuleComponent,
     FAQComponent,
-    LoginModuleComponent,
-    RegisterModuleComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -47,9 +47,13 @@ import { RegisterModuleComponent } from './register-module/register-module.compo
     DecimalPipe,
     AsyncPipe,
     ReactiveFormsModule,
-    NgbHighlight
+    NgbHighlight,
+    SlotMachineComponent
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]
+
+
+  
 })
 export class AppModule { }
