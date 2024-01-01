@@ -1,0 +1,83 @@
+//$icon_width: calc((225px * 90px)/ 100px);
+$icon_width: var(--icon-width);
+$icon_height: var(--icon-height);
+
+$num_reels: var(--num-reels);
+
+$slot_gradient_degree: 130deg;
+$slot_start_color: var(--slot-start-color); //rgb(0, 4, 255);
+$slot_end_color: var(--slot-end-color); //rgb(255, 0, 234);
+$slot_border_radius: 3px;
+
+$slot_rect_thickness: 12px;
+$slot_rect_color: var(--slot-rect-color); //rgb(255, 247, 0);
+$slot_rect_radius: 100px;
+
+$win_start_color: var(--win-start-color); //rgb(255, 165, 0);
+$win_end_color: var(--win-end-color); //rgb(255, 255, 0);
+
+$slot_padding: var(--slot-padding); //0.25;
+
+$width_helper: calc((3.5 * $num_reels) / 3);
+
+
+
+body {
+    position: relative;
+    margin: 0;
+    height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	//background: linear-gradient(45deg, rgb(0, 0, 0) 0%, rgrgb(0, 0, 0)00%);
+}
+
+.slots {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	width: calc($width_helper * $icon_width);
+	height: calc(3 * $icon_height);
+	display: flex;
+	justify-content: space-between;
+	padding: calc($slot_padding * $icon_width);
+	background: linear-gradient($slot_gradient_degree, $slot_start_color 0%, $slot_end_color 100%);
+	border-top: 1px solid rgba(rgb(0, 0, 0), 0);
+	border-right: 1px solid rgba(rgb(0, 0, 0), 0);
+	border-left: 1px solid rgba(rgb(0, 0, 0), 0);
+	border-bottom: 1px solid rgba(rgb(0, 0, 0), 0);
+	border-radius: 50px;
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: calc(1 * $icon_height);
+		border-radius: $slot_rect_radius;
+		border: $slot_rect_thickness solid $slot_rect_color;	
+		background: transparent; // Transparent interior
+		z-index: 1; // Ensure it's below the reels
+	}
+	
+	@keyframes win {
+		0% {
+			background: linear-gradient($slot_gradient_degree, $win_start_color 0%, $win_end_color 100%);
+		}
+		100% {
+			background: linear-gradient($slot_gradient_degree, $slot_start_color, $slot_end_color 100%);
+		}
+	}
+	
+	&.win {
+		animation: win 200ms steps(2, end) infinite;
+	}
+}
+
+button {
+	width: 200px;
+	height: 50px;
+}
