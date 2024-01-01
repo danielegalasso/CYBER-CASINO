@@ -18,6 +18,8 @@ import { FreeSpinComponent } from './free-spin/free-spin.component';
 import { SlotErnestoComponent } from './slot-ernesto/slot-ernesto.component';
 import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
+import { LoginModuleComponent } from './login-module/login-module.component';
+import { RegisterModuleComponent } from './register-module/register-module.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { FAQComponent } from './faq/faq.component';
     FreeSpinComponent,
     SlotErnestoComponent,
     BonusModuleComponent,
-    FAQComponent
+    FAQComponent,
+    LoginModuleComponent,
+    RegisterModuleComponent
   ],
   imports: [
     BrowserModule,
