@@ -18,34 +18,36 @@ import { FreeSpinComponent } from './free-spin/free-spin.component';
 import { SlotErnestoComponent } from './slot-ernesto/slot-ernesto.component';
 import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
+import { SlotMachineComponent } from "./slot-machine/slot-machine.component";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    ComplexImageComponent,
-    GamesGridComponent,
-    AdminPanelComponent,
-    FooterComponent,
-    HomeModuleComponent,
-    FreeSpinComponent,
-    SlotErnestoComponent,
-    BonusModuleComponent,
-    FAQComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserModule,
-    NgbModule,
-    AppRoutingModule,
-    DecimalPipe,
-    AsyncPipe,
-    ReactiveFormsModule,
-    NgbHighlight
-  ],
-  providers: [DecimalPipe],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        ComplexImageComponent,
+        GamesGridComponent,
+        AdminPanelComponent,
+        FooterComponent,
+        HomeModuleComponent,
+        FreeSpinComponent,
+        SlotErnestoComponent,
+        BonusModuleComponent,
+        FAQComponent
+    ],
+    providers: [DecimalPipe],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserModule,
+        NgbModule,
+        AppRoutingModule,
+        DecimalPipe,
+        AsyncPipe,
+        ReactiveFormsModule,
+        NgbHighlight,
+        SlotMachineComponent
+    ]
 })
 export class AppModule { }
