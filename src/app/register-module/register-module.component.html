@@ -1,1 +1,70 @@
-<p>register-module works!</p>
+<!doctype html>
+
+<html lang="en"> 
+
+ <head> 
+
+  <meta charset="UTF-8"> 
+
+
+
+ </head> 
+
+ <body> <!-- partial:index.partial.html --> 
+
+  <section> 
+   <div class="signon"> 
+
+    <div class="content"> 
+
+     <h2>Sign On</h2> 
+
+     <div class="form"> 
+
+      <div class="inputBox"> 
+
+       <input type="text" required> <i>Username</i> 
+
+      </div> 
+
+      <div class="inputBox"> 
+
+        <input type="email" required> <i>Email</i> 
+ 
+       </div> 
+
+      <div class="inputBox"> 
+
+       <input type="password" required> <i>Password</i> 
+
+      </div> 
+
+      <div class="inputBox"> 
+
+        <input type=" confirm-password" required> <i>Confirm Password</i> 
+ 
+       </div> 
+
+      <div class="links">
+        <a id="btn1">Already have Account?</a>
+        <a [routerLink]="['/login']" id="signInButton">Sign In</a> 
+
+      </div> 
+
+      <div class="inputBox"> 
+
+       <input type="submit" value="Register" id="login"> 
+
+      </div> 
+
+     </div> 
+
+    </div> 
+
+   </div> 
+
+  </section> <!-- partial --> 
+
+ </body>
+
+</html>

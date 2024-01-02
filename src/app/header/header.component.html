@@ -42,8 +42,8 @@
     
     <ng-template #notLoggedInTemplate>
 
-      <button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="submit">Sign In</button>
-      <button class="btn btn-primary my-2 my-sm-0 mr-4" type="submit">Sign On</button>
+      <button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="submit" [routerLink]="['/login']">Sign In</button>
+      <button class="btn btn-primary my-2 my-sm-0 mr-4" type="submit" [routerLink]="['/register']" >Sign On</button>
       
     </ng-template>
 

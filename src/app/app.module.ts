@@ -36,6 +36,8 @@ import { RegisterModuleComponent } from './register-module/register-module.compo
     SlotErnestoComponent,
     BonusModuleComponent,
     FAQComponent,
+    LoginModuleComponent,
+    RegisterModuleComponent,
     
   ],
   imports: [

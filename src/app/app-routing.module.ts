@@ -4,6 +4,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeModuleComponent } from './home-module/home-module.component';
 import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
+import { LoginModuleComponent } from './login-module/login-module.component';
+import { RegisterModuleComponent } from './register-module/register-module.component';
 
 const routes: Routes = [
   {
@@ -21,7 +23,16 @@ const routes: Routes = [
   {
     component:FAQComponent,
     path:'faq' 
+  },
+  {
+    component:LoginModuleComponent,
+    path:'login'
+  },
+  {
+    component:RegisterModuleComponent,
+    path:'register'
   }
+
 
 
 ];
