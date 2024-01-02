@@ -20,25 +20,22 @@ $slot_padding: var(--slot-padding); //0.25;
 
 $width_helper: calc((3.5 * $num_reels) / 3);
 
+body{
+	transform: scale(0.5);
+	max-width: 100%;
+	max-height: 100%;
+	
 
-
-body {
-    position: relative;
-    margin: 0;
-    height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	//background: linear-gradient(45deg, rgb(0, 0, 0) 0%, rgrgb(0, 0, 0)00%);
 }
 
 .slots {
+	
 	position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 100vh;
+    left: 50vw;
     transform: translate(-50%, -50%);
 	width: calc($width_helper * $icon_width);
-	height: calc(3 * $icon_height);
+	height: calc(3.62 * $icon_height);
 	display: flex;
 	justify-content: space-between;
 	padding: calc($slot_padding * $icon_width);
@@ -48,6 +45,9 @@ body {
 	border-left: 1px solid rgba(rgb(0, 0, 0), 0);
 	border-bottom: 1px solid rgba(rgb(0, 0, 0), 0);
 	border-radius: 50px;
+	
+
+
 
 	&::before {
 		content: "";
@@ -81,3 +81,5 @@ button {
 	width: 200px;
 	height: 50px;
 }
+
+
