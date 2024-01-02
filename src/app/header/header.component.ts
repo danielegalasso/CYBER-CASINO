@@ -21,7 +21,7 @@ export class HeaderComponent {
       if (event.url === '/faq' && this.selectedNavItem !== 'FAQ') {
         this.selectedNavItem = 'FAQ';
       }
-      if (event.url === '/admin') {
+      if (event.url === '/admin' || event.url === '/login' || event.url === '/register') {
         this.selectedNavItem = '';
       }
     });
