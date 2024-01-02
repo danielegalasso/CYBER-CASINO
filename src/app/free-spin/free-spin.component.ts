@@ -28,7 +28,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     // Initial rotation
     // Start engine
 
-    //localStorage.clear();   DECOMMENTARE PER PROVARE AD OGNI AVVIO
+    //localStorage.clear();   //DECOMMENTARE PER PROVARE AD OGNI AVVIO
     // Carica la data dell'ultimo spin da LocalStorage
     const lastSpinDateString = localStorage.getItem('lastSpinDate');
     this.lastSpinDate = lastSpinDateString ? new Date(lastSpinDateString) : null;
@@ -55,7 +55,6 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
   @ViewChild('wheelSound') wheelSound: ElementRef<HTMLAudioElement>;
   @ViewChild('winFineSound') winFineSound: ElementRef<HTMLAudioElement>;
   currentOptionIndex: number;
-
 
   sectors: any[] = [];
 
@@ -98,6 +97,11 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
       this.destinationIndex = 3;
 
       if (!this.angVel) this.angVel = this.rand(0.25, 0.35);
+
+      if (!this.lastSpinDate) {
+        this.lastSpinDate = new Date();
+        this.saveLastSpinDate();
+      }
     } else {
       // Gestisci il caso in cui lo spin non è consentito oggi
       console.log('Non è possibile effettuare uno spin oggi.');
@@ -169,10 +173,11 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
       // Mostriamo il messaggio di congratulazioni
       this.showCongratulations = true;
 
+      /* il salvataggio della data non lo faccio qua ma all'inizio, cosi se l'utente chiude la pagina prima di vedere il messaggio di congratulazioni, non gli viene comunque concesso un altro spin
       if (!this.lastSpinDate) {
         this.lastSpinDate = new Date();
         this.saveLastSpinDate();
-      }
+      } */
     }
 
     if (this.angVel >= 0.0028) {
