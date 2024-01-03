@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteConstants } from './model/routeConstants';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeModuleComponent } from './home-module/home-module.component';
 import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
@@ -14,11 +15,46 @@ import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.
 
 const routes: Routes = [
   {
-    component:MineSlotMachineComponent,
-    path: ''
+    component:HomeModuleComponent,
+    path: RouteConstants.home
+  },
+  {
+    component:AdminPanelComponent,
+    path: RouteConstants.admin,
+    //canActivate: [AuthGuardService]
+  },
+  {
+    component:FruitSlotMachineComponent,
+    path: RouteConstants.fruitSlot,
+    //canActivate: [AuthGuardService]
+  },
+  {
+    component:PremiumSlotMachineComponent,
+    path: RouteConstants.premiumSlot,
+    //canActivate: [AuthGuardService]
+  },
+  {
+    component:BonusModuleComponent,
+    path: RouteConstants.bonus,
+    //canActivate: [AuthGuardService]
+  },
+  {
+    component:FAQComponent,
+    path: RouteConstants.faq
+  },
+  {
+    component:LoginModuleComponent,
+    path: RouteConstants.login
+  },
+  {
+    component:RegisterModuleComponent,
+    path: RouteConstants.register
+  },
+  
+  {component:MineSlotMachineComponent,
+    path: RouteConstants.mineSlot,
   }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

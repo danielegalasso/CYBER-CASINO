@@ -1,5 +1,5 @@
 export var RouteConstants = {
-    home: 's',
+    home: '',
     admin: 'admin',
     bonus: 'bonus',
     faq: 'faq',
