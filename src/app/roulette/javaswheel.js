@@ -18,8 +18,9 @@ startGame();
 let wheel = document.getElementsByClassName('wheel')[0];
 let ballTrack = document.getElementsByClassName('ballTrack')[0];
 
+// posso eliminarla ????
 function resetGame(){
-    bankValue = 1000;
+    /*bankValue = 1000;
     currentBet = 0;
     wager = 5;
     bet = [];
@@ -27,7 +28,8 @@ function resetGame(){
     previousNumbers = [];
     document.getElementById('betting_board').remove();
     document.getElementById('notification').remove();
-    buildBettingBoard();
+    buildBettingBoard();*/
+    window.location.href = "http://localhost:4200";
 }
 
 function startGame(){
@@ -40,12 +42,13 @@ function gameOver(){
     notification.setAttribute('id', 'notification');
     let nSpan = document.createElement('span');
     nSpan.setAttribute('class', 'nSpan');
-    nSpan.innerText = 'Bankrupt';
+    nSpan.innerText = 'Bancarotta';
     notification.append(nSpan);
 
     let nBtn = document.createElement('div');
     nBtn.setAttribute('class', 'nBtn');
-    nBtn.innerText = 'Play again';
+    //nBtn.innerText = 'Play again';
+    nBtn.innerText = "Torna alla home";
     nBtn.onclick = function(){
         resetGame();
     };
