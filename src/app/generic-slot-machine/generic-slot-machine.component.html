@@ -1,20 +1,14 @@
-
-    <head>
+<head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
+</head>
+
 <body>
 
-
-    <div id="ernestoSlot">
-    <app-slot-machine [slotMachine]="mineSlot"></app-slot-machine>
-    </div>
-
-
-    
-
     <div class="my-container1">
+        <div id="SlotComponent">
+            <app-slot-machine [slotMachine]="slotMachine"></app-slot-machine>
+            </div>
 
         <a class="navbar-brand" href="#">
             <img src="../../assets/img/3-1.png" alt="Logo" style="max-height: 40px;">
@@ -24,23 +18,14 @@
             BALANCE: ${{ balance }}
         </span>
     
-        
-        <div id="slotErnesto">
-            
-            
+        <div id="slotButtons">
             <button id='spinButton' type="button" class="btn btn-success btn-lg" (click)="spinAction()" (appSpacePress)="spinAction() " tabindex="0">SPIN</button>
     
             <div class="bet">
                 <button id="minus" type="button" class="btn btn-danger btn-lg" (click)="deleteFromBet()">-</button>
-                <span class="label" id="labelBet">BET: ${{ bet }}</span>
+                <span class="label label-default" id="labelBet">BET: ${{ bet }}</span>
                 <button id="plus" type="button" class="btn btn-success btn-lg" (click)="addToBet()">+</button>
             </div>
         </div>
-        
-
-
     </div>
-    
-
-
 </body>

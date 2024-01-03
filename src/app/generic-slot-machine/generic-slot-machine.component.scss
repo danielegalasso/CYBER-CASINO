@@ -1,13 +1,12 @@
-
-
+$slotBackgroundImg: var(--background-img);
 
 .my-container1{
-    background-image: url("../../assets/SlotBg/TOPPP.png");
+    background-image: $slotBackgroundImg;
     background-size: cover;
     background-position: center center;
-    }
+}
 
-#slotErnesto {
+#slotButtons {
     width: 60vw;
     height: 60vh;
     position: absolute;
@@ -18,7 +17,7 @@
 
 }
 
-#slotErnesto img {
+#slotButtons img {
     max-width: 100%;
     max-height: 100%;
 }
@@ -26,8 +25,8 @@
 #balanceLablel{
     font-size: medium;
     position: absolute;
-    top: 15%;
-    left: 65%;
+    top: 10%;
+    right: 0%;
     width: 16vw;
     min-width: 140px;
     height: 6vh;
@@ -61,10 +60,6 @@
 #labelBet{
     font-size: medium;
     color: white; /* Colore del testo */
+    background-color: black;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-
-
-
-
-

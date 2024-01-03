@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SlotErnestoComponent } from './slot-ernesto.component';
+import { MineSlotMachineComponent } from './mine-slot-machine.component';
 
-describe('SlotErnestoComponent', () => {
-  let component: SlotErnestoComponent;
-  let fixture: ComponentFixture<SlotErnestoComponent>;
+describe('MineSlotMachineComponent', () => {
+  let component: MineSlotMachineComponent;
+  let fixture: ComponentFixture<MineSlotMachineComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SlotErnestoComponent]
+      declarations: [MineSlotMachineComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(SlotErnestoComponent);
+    fixture = TestBed.createComponent(MineSlotMachineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

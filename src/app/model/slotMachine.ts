@@ -14,6 +14,8 @@ export class SlotMachine {
     private win_start_color: string;
     private win_end_color: string;
 
+    private backgroundImg: string;
+
     constructor (slotType: string,
                          numReels: number,
                          numIcons: number,
@@ -26,7 +28,8 @@ export class SlotMachine {
                          slot_end_color: string,
                          slot_rect_color: string,
                          win_start_color: string,
-                         win_end_color: string)
+                         win_end_color: string,
+                         backgroundImg: string)
     {
         this.slotType = slotType;
         this.numReels = numReels;
@@ -41,6 +44,7 @@ export class SlotMachine {
         this.slot_rect_color = slot_rect_color;
         this.win_start_color = win_start_color;
         this.win_end_color = win_end_color;
+        this.backgroundImg = backgroundImg;
     }
 
     get SlotType(): string {
@@ -94,6 +98,10 @@ export class SlotMachine {
     get WinEndColor(): string {
         return this.win_end_color;
     }
+
+    get BackgroundImg(): string {
+        return this.backgroundImg;
+    }
 }
 
 
@@ -112,6 +120,8 @@ export class SlotMachineBuilder {
     private slot_rect_color?: string;
     private win_start_color?: string;
     private win_end_color?: string;
+
+    private backgroundImg?: string;
 
     constructor() { }
 
@@ -180,6 +190,11 @@ export class SlotMachineBuilder {
         return this;
     }
 
+    public setBackgroundImg(slotBackgroundImg: string): SlotMachineBuilder {
+        this.backgroundImg = slotBackgroundImg;
+        return this;
+    }
+
     public build(): SlotMachine {
         //check if all properties are set
         if (this.slotType === undefined) {
@@ -221,6 +236,9 @@ export class SlotMachineBuilder {
         if (this.win_end_color === undefined) {
             throw new Error("WinEndColor is not set");
         }
+        if (this.backgroundImg === undefined) {
+            throw new Error("BackgroundImg is not set");
+        }
 
         return new SlotMachine(this.slotType,
                                this.numReels,
@@ -234,6 +252,7 @@ export class SlotMachineBuilder {
                                this.slot_end_color,
                                this.slot_rect_color,
                                this.win_start_color,
-                               this.win_end_color);
+                               this.win_end_color,
+                               this.backgroundImg);
     }
 }

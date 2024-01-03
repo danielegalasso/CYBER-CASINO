@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from './slot-machine/slotMachine';
+import { SlotMachine, SlotMachineBuilder } from './model/slotMachine';
 
 
 @Component({

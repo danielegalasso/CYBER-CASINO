@@ -15,12 +15,15 @@ import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 import { FreeSpinComponent } from './free-spin/free-spin.component';
-import { SlotErnestoComponent } from './slot-ernesto/slot-ernesto.component';
 import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
 import { SlotMachineComponent } from "./slot-machine/slot-machine.component";
 import { LoginModuleComponent } from './login-module/login-module.component';
 import { RegisterModuleComponent } from './register-module/register-module.component';
+import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.component';
+import { GenericSlotMachineComponent } from './generic-slot-machine/generic-slot-machine.component';
+import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machine.component';
+import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot-machine.component';
 
 
 @NgModule({
@@ -33,12 +36,14 @@ import { RegisterModuleComponent } from './register-module/register-module.compo
     FooterComponent,
     HomeModuleComponent,
     FreeSpinComponent,
-    SlotErnestoComponent,
     BonusModuleComponent,
     FAQComponent,
     LoginModuleComponent,
     RegisterModuleComponent,
-    
+    MineSlotMachineComponent,
+    GenericSlotMachineComponent,
+    FruitSlotMachineComponent,
+    PremiumSlotMachineComponent,
   ],
   imports: [
     BrowserModule,

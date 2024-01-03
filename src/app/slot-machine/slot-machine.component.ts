@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HostListener, AfterViewInit, Component, ElementRef, ViewChild, Input, OnInit } from '@angular/core';
-import { SlotMachine } from './slotMachine';
+import { SlotMachine } from '../model/slotMachine';
 
 @Component({
   selector: 'app-slot-machine',
