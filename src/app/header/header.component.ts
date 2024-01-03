@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import {AuthenticationService} from "../service/authentication.service";
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { filter } from 'rxjs/operators';
 })
 export class HeaderComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthenticationService) {
     // Aggiungi un ascoltatore per gli eventi di navigazione
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)

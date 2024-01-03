@@ -24,6 +24,7 @@ import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.
 import { GenericSlotMachineComponent } from './generic-slot-machine/generic-slot-machine.component';
 import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machine.component';
 import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot-machine.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -55,12 +56,13 @@ import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot
     AsyncPipe,
     ReactiveFormsModule,
     NgbHighlight,
-    SlotMachineComponent
+    SlotMachineComponent,
+    HttpClientModule,
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]
 
 
-  
+
 })
 export class AppModule { }
