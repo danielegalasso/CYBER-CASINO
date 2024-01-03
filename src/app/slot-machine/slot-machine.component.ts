@@ -112,11 +112,6 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
   }
 
   rollAll(): void {
-    if (this.rolling)
-      return;
-    
-    this.rolling = true;
-
     if (this.winMode) {
       this.stopSFX();
       document.querySelector(".slots")?.classList.remove('win');

@@ -34,17 +34,17 @@ export class AuthenticationService {
         return this.getToken() != undefined;
     }
 
-    //private methods
-    private setToken(token: string) {
-        this.token = token;
-        localStorage.setItem(this.tokenName, token);
-    }
-
-    private getToken() {
+    getToken() {
         if (this.token == undefined) {
             this.token = localStorage.getItem(this.tokenName);
         }
         return this.token;
+    }
+
+    //private methods
+    private setToken(token: string) {
+        this.token = token;
+        localStorage.setItem(this.tokenName, token);
     }
 
     private removeToken() {
