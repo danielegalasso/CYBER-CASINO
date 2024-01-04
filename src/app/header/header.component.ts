@@ -43,6 +43,10 @@ export class HeaderComponent implements OnInit, DoCheck {
     if (this.isLoggedIn !== isAuthenticated) {
       this.isLoggedIn = isAuthenticated;
       this.isAdmin = this.authService.isAdmin();
+      if (this.isLoggedIn) {
+        this.router.navigate(['/']);
+        this.selectedNavItem = 'Games';
+      }
     }
   }
 

@@ -14,13 +14,15 @@
             <img src="../../assets/img/3-1.png" alt="Logo" style="max-height: 40px;">
         </a>
     
-        <span class="label label-default" id="balanceLablel">
-            BALANCE: ${{ balance }}
-        </span>
+        
     
         <div id="slotButtons">
             <button id='spinButton' type="button" class="btn btn-success btn-lg" (click)="spinAction()" (appSpacePress)="spinAction() " tabindex="0">SPIN</button>
-    
+            
+            <span class="label label-default" id="balanceLablel">
+                BALANCE: ${{ balance }}
+            </span>
+
             <div class="bet">
                 <button id="minus" type="button" class="btn btn-danger btn-lg" (click)="deleteFromBet()">-</button>
                 <span class="label label-default" id="labelBet">BET: ${{ bet }}</span>

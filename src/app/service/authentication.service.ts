@@ -27,6 +27,8 @@ export class AuthenticationService {
     }
 
     login(username, password){
+        //guarda 'this.authService.isAuthent = true; ' in login-module.component.ts
+
         //dato un username e password effuttua il login (solo se esiste l'utente) e si salva un token
         
 
