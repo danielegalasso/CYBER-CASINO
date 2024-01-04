@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       }
     });
 
-    this.isLoggedIn = this.authService.isAuthent;
+    this.isLoggedIn = this.authService.isAuthenticated();
     this.isAdmin = this.authService.isAdmin();
 
     this.printIsLoggedIn();

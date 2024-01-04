@@ -1,50 +1,70 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-games-grid',
   templateUrl: './games-grid.component.html',
   styleUrl: './games-grid.component.scss'
 })
-export class GamesGridComponent {
+export class GamesGridComponent implements OnInit, DoCheck{
+  showLoginAlert() {
+  alert("You must be logged in to play!");
+  }
+
+  constructor(private authService: AuthenticationService) { }
+
+  isLoggedIn = false;
+
+  ngOnInit() {
+    this.isLoggedIn = this.authService.isAuthenticated();
+
+  }
+
+  ngDoCheck() {
+    // Monitora i cambiamenti nella funzione isAuthenticated e aggiorna isLoggedIn
+    const isAuthenticated = this.authService.isAuthenticated();
+    if (this.isLoggedIn !== isAuthenticated) {
+      this.isLoggedIn = isAuthenticated;
+    }
+  }
 
 
 
   allImages = [
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 175834 - Copia.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 184223.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 184258.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 184321.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 184442.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 184724.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 184929.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 185147.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 185211.png'
+    { nome: 'fruitSlot', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 175834 - Copia.png' },
+    { nome: 'mineSlot', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 184442.png' },
+    { nome: 'premiumSlot', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 185054.png' },
+    { nome: 'roulette', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 184223.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' }
   ];
+  
 
-  sloths = [
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 175834 - Copia.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 184442.png',
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 185054.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png'
-
-
+  slots =[
+    { nome: 'fruitSlot', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 175834 - Copia.png' },
+    { nome: 'mineSlot', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 184442.png' },
+    { nome: 'premiumSlot', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 185054.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' }
   ];
 
   roulette = [
-    '../../assets/GamesCopertine/Screenshot 2023-12-26 184223.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png',
-    '../../assets/GamesCopertine/empty.png'
+    { nome: 'roulette', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 184223.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' }
   ];
 
   immagini = this.allImages;
@@ -58,7 +78,7 @@ export class GamesGridComponent {
     if (tab == 'ALL'){
       this.immagini = this.allImages;
     } else if (tab == 'SLOTS'){
-      this.immagini = this.sloths;
+      this.immagini = this.slots;
     } else if (tab == 'ROULETTE'){
       this.immagini = this.roulette;
     }

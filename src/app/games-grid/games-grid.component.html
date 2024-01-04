@@ -29,16 +29,22 @@
 
 
 
-<div class = 'grid'>
-  <div class="row">
+  <div class='grid'>
+    <div class="row">
       <div class="column" *ngFor="let immagine of immagini; let i = index">
-        <a href="https://www.google.com">
-          <img [src]="immagine" style="width:100%">
-        </a>
+        <ng-container *ngIf="isLoggedIn; else loginAlert">
+          <a [routerLink]="['/', immagine.nome]">
+            <img [src]="immagine.url" style="width:100%">
+          </a>
+        </ng-container>
+        <ng-template #loginAlert>
+          <div (click)="showLoginAlert()" style="cursor: pointer;">
+            <img [src]="immagine.url" style="width:100%">
+          </div>
+        </ng-template>
       </div>
+    </div>
   </div>
-</div>
-
 
 </body>
 </html>
