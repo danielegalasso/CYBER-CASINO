@@ -8,6 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { DataService } from '../service/data.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 //const COLORS = ['#f82', '#0bf', '#fb0', '#0fb', '#b0f', '#f0b', '#bf0'];
 const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
@@ -18,7 +19,8 @@ const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
   styleUrl: './free-spin.component.scss'
 })
 export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
-  constructor(private dataService: DataService) {}
+
+  constructor(private dataService: DataService, private authService: AuthenticationService) {}
   ngDoCheck(): void {
     this.engine();
   }
@@ -92,6 +94,10 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
 
   noSpinToday = false;
   spinner() {
+    if (!this.authService.isAuthenticated()) {
+      // Se non è loggato, mostra l'alert
+      alert('Login to use your daily spin');
+    } else {
     // Verifica se è possibile effettuare uno spin oggi
     if (this.canSpinToday()) {
       this.destinationIndex = 3;
@@ -107,6 +113,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
       console.log('Non è possibile effettuare uno spin oggi.');
       this.noSpinToday = true;
     }
+  }
   }
 
   canSpinToday(): boolean {
