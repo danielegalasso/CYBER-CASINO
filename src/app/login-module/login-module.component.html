@@ -23,13 +23,13 @@
 
       <div class="inputBox"> 
 
-       <input type="text" required> <i>Username</i> 
+       <input type="text" required [(ngModel)]="username"> <i>Username</i> 
 
       </div> 
 
       <div class="inputBox"> 
 
-       <input type="password" required> <i>Password</i> 
+       <input type="password" required [(ngModel)]="password" > <i>Password</i> 
 
       </div> 
 
@@ -41,7 +41,7 @@
 
       <div class="inputBox"> 
 
-       <input type="submit" value="Login" id="login"> 
+       <input type="submit" value="Login" id="login" (click)="logIn()"> 
 
       </div> 
 

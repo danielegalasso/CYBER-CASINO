@@ -25,7 +25,7 @@ import { GenericSlotMachineComponent } from './generic-slot-machine/generic-slot
 import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machine.component';
 import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot-machine.component';
 import {HttpClientModule} from "@angular/common/http";
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -58,6 +58,7 @@ import {HttpClientModule} from "@angular/common/http";
     NgbHighlight,
     SlotMachineComponent,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]

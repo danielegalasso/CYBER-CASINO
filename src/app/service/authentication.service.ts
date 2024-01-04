@@ -10,28 +10,53 @@ import { RouteConstants } from "../model/routeConstants";
     providedIn: 'root'
 })
 export class AuthenticationService {
+
+    
     readonly tokenName = 'sessionToken';
     private token:string = undefined;
 
     constructor(private http: HttpClient, private router:Router) { }
     
-    login(username, password) {
+    isAdmin():boolean {
+        //Ernesto crea is Admin
+        return true;
+    }
+
+    register(username: string, email: string, password: string, confirmPassword: string) {
+        //Ernesto fai il register
+    }
+
+    login(username, password){
+        //dato un username e password effuttua il login (solo se esiste l'utente) e si salva un token
+        
+
+        /*
         let credentials: Credentials = {"username": username, "password": password};
         this.http.post<AuthToken>(BackendConstants.url + BackendConstants.login, credentials, {withCredentials: true})
             .subscribe(response => {
                 this.setToken(response.token);
                 this.router.navigate([RouteConstants.home]);
             })
+        */
+
     }
 
     logout() {
         // remove user from local storage to log user out
         this.removeToken();
         this.router.navigate([RouteConstants.home]);
+        this.isAuthent = false;
     }
 
-    isAuthenticated() {
-        return this.getToken() != undefined;
+
+
+    isAuthent = false;
+    isAuthenticated():boolean {
+        if (this.isAuthent){
+            return true;
+        }
+        return false;
+        /*return this.getToken() != undefined*/;
     }
 
     getToken() {

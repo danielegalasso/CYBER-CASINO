@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component , OnInit, DoCheck} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import {AuthenticationService} from "../service/authentication.service";
+import { AuthenticationService } from '../service/authentication.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, DoCheck {
 
   constructor(private router: Router, private authService: AuthenticationService) {
+    
+  }
+  
+  ngOnInit() {
     // Aggiungi un ascoltatore per gli eventi di navigazione
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -26,6 +30,20 @@ export class HeaderComponent {
         this.selectedNavItem = '';
       }
     });
+
+    this.isLoggedIn = this.authService.isAuthent;
+    this.isAdmin = this.authService.isAdmin();
+
+    this.printIsLoggedIn();
+  }
+
+  ngDoCheck() {
+    // Monitora i cambiamenti nella funzione isAuthenticated e aggiorna isLoggedIn
+    const isAuthenticated = this.authService.isAuthenticated();
+    if (this.isLoggedIn !== isAuthenticated) {
+      this.isLoggedIn = isAuthenticated;
+      this.isAdmin = this.authService.isAdmin();
+    }
   }
 
   selectedNavItem: string = 'Games'; // Inizializza con il valore predefinito
@@ -34,11 +52,13 @@ export class HeaderComponent {
     this.selectedNavItem = navItem;
   }
 
-  isLoggedIn = true;
-  isAdmin = true;
+
+  isLoggedIn = false;
+  isAdmin = false;
 
   signOut() {
     // Imposta isLoggedIn su false quando il pulsante viene cliccato
+    this.authService.logout();
     this.isLoggedIn = false;
   }
 
@@ -46,5 +66,14 @@ export class HeaderComponent {
     // Previeni l'azione predefinita del form
     event.preventDefault();
   }
+
+  
+  
+// Funzione per stampare il valore di isLoggedIn nella console ogni 2 secondi (DEBUGGING ONLY)
+printIsLoggedIn(): void {
+  setInterval(() => {
+    console.log(this.authService.isAuthenticated());
+  }, 2000);
+}
 
 }
