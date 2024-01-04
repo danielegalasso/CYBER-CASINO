@@ -9,6 +9,14 @@ html, body{
     user-select: none;
 }
 
+body{
+    background-image: url("assets/SlotBg/Roulette2.png");
+    height: 95 vh;
+    width: 95 vw;
+    background-size: cover;
+    background-position: center center;
+}
+
 #container{
     display: flex;
     justify-content: center;

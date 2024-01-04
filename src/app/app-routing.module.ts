@@ -12,6 +12,7 @@ import { GenericSlotMachineComponent } from './generic-slot-machine/generic-slot
 import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot-machine.component';
 import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machine.component';
 import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.component';
+import {RouletteComponent} from "./roulette/roulette.component";
 
 const routes: Routes = [
   {
@@ -50,9 +51,13 @@ const routes: Routes = [
     component:RegisterModuleComponent,
     path: RouteConstants.register
   },
-  
+
   {component:MineSlotMachineComponent,
     path: RouteConstants.mineSlot,
+  },
+  {
+    component:RouletteComponent,
+    path: RouteConstants.roulette,
   }
 ];
 @NgModule({

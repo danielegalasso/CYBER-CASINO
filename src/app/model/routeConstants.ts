@@ -8,4 +8,5 @@ export var RouteConstants = {
     fruitSlot: 'fruitSlot',
     premiumSlot: 'premiumSlot',
     mineSlot: 'mineSlot',
+    roulette: 'roulette',
 };

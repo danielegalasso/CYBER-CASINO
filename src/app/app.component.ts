@@ -24,11 +24,11 @@ export class AppComponent implements OnInit{
 
   checkRoute(url: string) {
     // Aggiungi altre condizioni se necessario
-    if (url === '/fruitSlot' || url === '/premiumSlot' || url === '/mineSlot') {
+    if (url === '/fruitSlot' || url === '/premiumSlot' || url === '/mineSlot' || url === '/roulette') {
       this.shouldDisplay = false;
     } else {
       this.shouldDisplay = true;
     }
   }
-  
+
 }
