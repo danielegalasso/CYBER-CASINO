@@ -100,7 +100,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     } else {
     // Verifica se è possibile effettuare uno spin oggi
     if (this.canSpinToday()) {
-      this.destinationIndex = 3;
+      this.destinationIndex = 2;
 
       if (!this.angVel) this.angVel = this.rand(0.25, 0.35);
 
