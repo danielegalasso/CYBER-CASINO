@@ -3,6 +3,7 @@ export var BackendConstants = {
     login: '/login',
     register: '/register',
     generateResult: "/generateResult",
+    getBalance: "/getBalance",
     
 
     isAuthenticated: '/isAuthenticated',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from '../model/slotMachine';
+import { SlotMachine, SlotMachineBuilder } from '../model/Games/slotMachine';
 
 @Component({
   selector: 'app-fruit-slot-machine',
@@ -31,7 +31,7 @@ export class FruitSlotMachineComponent {
                   .setNumIcons(12)
                   .setTimePerIcon(80)
                   .setElementPositions(this.fruitElemPosition)
-                  .setSlotSizePercent(160)
+                  .setSlotSizePercent(200)
                   .setSlotPadding(0.30)
                   .setSlotGradientDegree('130deg')
                   .setSlotStartColor('rgb(0, 4, 255)')

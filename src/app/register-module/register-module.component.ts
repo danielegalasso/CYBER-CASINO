@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationService } from '../model/services/authentication.service';
 
 @Component({
   selector: 'app-register-module',
@@ -24,18 +24,12 @@ export class RegisterModuleComponent {
       return;
     }
 
-    this.authService.register(this.username, this.email, this.password, this.confirmPassword);
+    this.authService.register(this.username, this.email, this.password);
 
     this.username = '';
     this.email = '';
     this.password = '';
     this.confirmPassword = '';
-
-    //se ci sono problemi alza eccezioni prima
-    //this.router.navigate([RouteConstants.home]);
-
-    alert('The registration was successful! You can now log in.');
-    
   }
 
 }

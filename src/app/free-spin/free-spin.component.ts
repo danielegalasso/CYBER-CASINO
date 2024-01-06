@@ -7,8 +7,8 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { DataService } from '../service/data.service';
-import { AuthenticationService } from '../service/authentication.service';
+import { DataService } from '../model/services/data.service';
+import { AuthenticationService } from '../model/services/authentication.service';
 
 //const COLORS = ['#f82', '#0bf', '#fb0', '#0fb', '#b0f', '#f0b', '#bf0'];
 const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];

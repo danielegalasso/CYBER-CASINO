@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
-import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationService } from '../model/services/authentication.service';
 
 @Component({
   selector: 'app-games-grid',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationService } from '../model/services/authentication.service';
 
 @Component({
   selector: 'app-login-module',
@@ -14,13 +14,6 @@ export class LoginModuleComponent {
     console.log('Username:', this.username);
     console.log('Password:', this.password);
     this.authService.login(this.username, this.password);
-
-    this.authService.isAuthent = true; //per ora uso questa variabile perché il login di ernesto non funziona
-
-    this.username = '';
-    this.password = '';
-    
-
   }
 
   username: string = '';

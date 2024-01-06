@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from './model/slotMachine';
+import { SlotMachine, SlotMachineBuilder } from './model/Games/slotMachine';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({

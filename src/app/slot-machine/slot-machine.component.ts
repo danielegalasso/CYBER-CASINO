@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HostListener, AfterViewInit, Component, ElementRef, ViewChild, Input, OnInit } from '@angular/core';
-import { SlotMachine } from '../model/slotMachine';
+import { SlotMachine } from '../model/Games/slotMachine';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-slot-machine',
@@ -18,11 +19,12 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
   reelsList: Array<Element> = [];
   shifters: Array<number> = [0, 0, 0];
 
-  result: Array<string> = [];;
+  result: Array<string> = [];
 
   readonly additionalSpin: number = 5;
 
-  rolling: boolean = false;
+  rolling = new BehaviorSubject<boolean>(false);
+  rollingObservable = this.rolling.asObservable();
 
   @ViewChild('musicPlayer') audioPlayer!: ElementRef;
   @ViewChild('sfxPlayer') sfxPlayer!: ElementRef;
@@ -117,7 +119,6 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
       document.querySelector(".slots")?.classList.remove('win');
       this.winMode = false;
     }
-    this.getResult();
     this.playSpinSFX();
 
     Promise
@@ -129,7 +130,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
       .then(() => {
         this.stopSFX();
         this.checkWin();
-        this.rolling = false;
+        this.rolling.next(false);
       });
   }
 
@@ -170,12 +171,6 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
   //utility functions
   getRandomInt(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  getResult(): void {
-    //get result from the server
-    //...
-    this.result = ['star', 'star', 'star', 'star'];
   }
 
   private hasPlayed: boolean = false;
