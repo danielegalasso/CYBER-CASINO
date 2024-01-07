@@ -14,6 +14,7 @@ import { GameInformation } from '../model/Games/GameInformation';
 import { generate } from 'rxjs';
 import { GameType } from '../model/Games/GameType';
 import { DailySpinConstants } from '../model/Games/DailySpin/DailySpinConstants';
+import { Router } from '@angular/router';
 
 //const COLORS = ['#f82', '#0bf', '#fb0', '#0fb', '#b0f', '#f0b', '#bf0'];
 const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
@@ -25,7 +26,7 @@ const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
 })
 export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
 
-  constructor(private dataService: DataService, private authService: AuthenticationService, private gamesService: GamesService) {}
+  constructor(private dataService: DataService, private authService: AuthenticationService, private gamesService: GamesService, private router: Router) {}
   ngDoCheck(): void {
     this.engine();
   }
@@ -103,7 +104,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
   spinner() {
     if (!this.authService.isAuthenticated()) {
       // Se non è loggato, mostra l'alert
-      alert('Login to use your daily spin');
+      this.router.navigate(['/login']);
       return;
     }
 

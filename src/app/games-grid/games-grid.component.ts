@@ -1,4 +1,4 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit} from '@angular/core';
 import { AuthenticationService } from '../model/services/authentication.service';
 
 @Component({
@@ -7,9 +7,8 @@ import { AuthenticationService } from '../model/services/authentication.service'
   styleUrl: './games-grid.component.scss'
 })
 export class GamesGridComponent implements OnInit, DoCheck{
-  showLoginAlert() {
-  alert("You must be logged in to play!");
-  }
+
+
 
   constructor(private authService: AuthenticationService) { }
 

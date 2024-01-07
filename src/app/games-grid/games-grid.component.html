@@ -38,7 +38,7 @@
           </a>
         </ng-container>
         <ng-template #loginAlert>
-          <div (click)="showLoginAlert()" style="cursor: pointer;">
+          <div [routerLink]="['/login']" style="cursor: pointer;">
             <img [src]="immagine.url" style="width:100%">
           </div>
         </ng-template>
