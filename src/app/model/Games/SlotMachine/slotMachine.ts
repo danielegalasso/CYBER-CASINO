@@ -1,5 +1,7 @@
+import { SlotMachineType } from "./SlotMachineType";
+
 export class SlotMachine {
-    private slotType: string;
+    private slotType: SlotMachineType;
     private numReels: number;
     private numIcons: number;
     private time_per_icon: number;
@@ -16,7 +18,7 @@ export class SlotMachine {
 
     private backgroundImg: string;
 
-    constructor (slotType: string,
+    constructor (slotType: SlotMachineType,
                          numReels: number,
                          numIcons: number,
                          time_per_icon: number,
@@ -47,7 +49,7 @@ export class SlotMachine {
         this.backgroundImg = backgroundImg;
     }
 
-    get SlotType(): string {
+    get SlotType(): SlotMachineType {
         return this.slotType;
     }
 
@@ -106,7 +108,7 @@ export class SlotMachine {
 
 
 export class SlotMachineBuilder {
-    private slotType?: string;
+    private slotType?: SlotMachineType;
     private numReels?: number;
     private numIcons?: number;
     private time_per_icon?: number;
@@ -125,7 +127,7 @@ export class SlotMachineBuilder {
 
     constructor() { }
 
-    public setSlotType(slotType: string): SlotMachineBuilder {
+    public setSlotType(slotType: SlotMachineType): SlotMachineBuilder {
         this.slotType = slotType;
         return this;
     }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HostListener, AfterViewInit, Component, ElementRef, ViewChild, Input, OnInit } from '@angular/core';
-import { SlotMachine } from '../model/Games/slotMachine';
+import { SlotMachine } from '../model/Games/SlotMachine/slotMachine';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({

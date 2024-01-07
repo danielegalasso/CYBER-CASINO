@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from '../model/Games/slotMachine';
+import { SlotMachine, SlotMachineBuilder } from '../model/Games/SlotMachine/slotMachine';
 import { SlotMachineComponent } from '../slot-machine/slot-machine.component';
 import { GameInformation } from '../model/Games/GameInformation';
 import { AuthenticationService } from '../model/services/authentication.service';
@@ -114,7 +114,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
           return;
         }
         console.log(generatedGame);
-        this.slotMachineComponent.result = generatedGame.gameResult;
+        this.slotMachineComponent.result = generatedGame.result;
         this.tmpBalance = generatedGame.balance;
         this.slotMachineComponent.rollAll();
       },

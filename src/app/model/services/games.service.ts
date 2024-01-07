@@ -7,7 +7,7 @@ import { BackendConstants } from "../backendConstants";
 import { RouteConstants } from "../routeConstants";
 import { GameInformation } from "../Games/GameInformation";
 import { Observable } from "rxjs";
-import { GeneratedGame } from "../Games/GeneratedGame";
+import { GameResult } from "../Games/GameResult";
 import { AuthenticationService } from "./authentication.service";
 
 @Injectable({
@@ -16,8 +16,10 @@ import { AuthenticationService } from "./authentication.service";
 export class GamesService {
     constructor(private http:HttpClient, private authService: AuthenticationService) {}
 
-    generateResult(gameInformation: GameInformation):Observable<GeneratedGame> {
-        return this.http.post<GeneratedGame>(BackendConstants.url + BackendConstants.generateResult, gameInformation, {withCredentials: true});
+
+
+    generateResult(gameInformation: GameInformation):Observable<GameResult> {
+        return this.http.post<GameResult>(BackendConstants.url + BackendConstants.play, gameInformation, {withCredentials: true});
     }
 
     getBalance():Observable<number> {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from '../model/Games/slotMachine';
+import { SlotMachine, SlotMachineBuilder } from '../model/Games/SlotMachine/slotMachine';
+import { SlotMachineType } from '../model/Games/SlotMachine/SlotMachineType';
 
 @Component({
   selector: 'app-fruit-slot-machine',
@@ -26,7 +27,7 @@ export class FruitSlotMachineComponent {
 
   createFruitSlot(): SlotMachine {
     let fruitSlotBuilder = new SlotMachineBuilder();
-    fruitSlotBuilder.setSlotType("fruit")
+    fruitSlotBuilder.setSlotType(SlotMachineType.FRUIT)
                   .setNumReels(4)
                   .setNumIcons(12)
                   .setTimePerIcon(80)

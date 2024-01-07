@@ -9,6 +9,9 @@ import {
 } from '@angular/core';
 import { DataService } from '../model/services/data.service';
 import { AuthenticationService } from '../model/services/authentication.service';
+import { GamesService } from '../model/services/games.service';
+import { GameInformation } from '../model/Games/GameInformation';
+import { generate } from 'rxjs';
 
 //const COLORS = ['#f82', '#0bf', '#fb0', '#0fb', '#b0f', '#f0b', '#bf0'];
 const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
@@ -20,7 +23,7 @@ const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
 })
 export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
 
-  constructor(private dataService: DataService, private authService: AuthenticationService) {}
+  constructor(private dataService: DataService, private authService: AuthenticationService, private gamesService: GamesService) {}
   ngDoCheck(): void {
     this.engine();
   }
@@ -92,39 +95,39 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     this.rotate(true);
   }
 
+  spinning = false;
   noSpinToday = false;
+
   spinner() {
     if (!this.authService.isAuthenticated()) {
       // Se non è loggato, mostra l'alert
       alert('Login to use your daily spin');
-    } else {
-    // Verifica se è possibile effettuare uno spin oggi
-    if (this.canSpinToday()) {
-      this.destinationIndex = 2;
-
-      if (!this.angVel) this.angVel = this.rand(0.25, 0.35);
-
-      if (!this.lastSpinDate) {
-        this.lastSpinDate = new Date();
-        this.saveLastSpinDate();
-      }
-    } else {
-      // Gestisci il caso in cui lo spin non è consentito oggi
-      console.log('Non è possibile effettuare uno spin oggi.');
-      this.noSpinToday = true;
+      return;
     }
-  }
-  }
 
-  canSpinToday(): boolean {
-    // Verifica se è passato almeno un giorno dall'ultimo spin
-    const today = new Date();
-    return !this.lastSpinDate || today.getDate() !== this.lastSpinDate.getDate();
-  }
+    if (this.spinning) {
+      return;
+    }
+    this.spinning = true;
 
-  saveLastSpinDate() {
-    // Salva la data dell'ultimo spin in LocalStorage
-    localStorage.setItem('lastSpinDate', this.lastSpinDate.toISOString());
+    let gameinfo: GameInformation = {"sessionToken": this.authService.getTokenValue(), "gameName": "DAILYSPIN", "bet": 0};
+    this.gamesService.generateResult(gameinfo).subscribe(
+      generatedGame => {
+        console.log(generatedGame);
+
+        if (generatedGame.result == null) {
+          alert("You have already used your daily spin");
+          this.noSpinToday = true;
+          this.spinning = false;
+          return;
+        }
+
+        this.destinationIndex = 0;//parseInt(generatedGame.gameResult.at(0));
+
+        if (!this.angVel)
+          this.angVel = this.rand(0.25, 0.35);
+      }
+    )
   }
 
   getIndex = () =>
@@ -179,6 +182,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
 
       // Mostriamo il messaggio di congratulazioni
       this.showCongratulations = true;
+      this.spinning = false;
 
       /* il salvataggio della data non lo faccio qua ma all'inizio, cosi se l'utente chiude la pagina prima di vedere il messaggio di congratulazioni, non gli viene comunque concesso un altro spin
       if (!this.lastSpinDate) {
