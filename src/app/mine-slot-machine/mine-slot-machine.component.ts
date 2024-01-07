@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from '../model/slotMachine';
+import { SlotMachine, SlotMachineBuilder } from '../model/Games/SlotMachine/slotMachine';
+import { SlotMachineType } from '../model/Games/SlotMachine/SlotMachineType';
 
 @Component({
   selector: 'app-mine-slot-machine',
@@ -26,12 +27,12 @@ export class MineSlotMachineComponent {
 
   private createMineSlot(): SlotMachine {
     let mineSlotBuilder = new SlotMachineBuilder();
-    mineSlotBuilder.setSlotType("mine")
+    mineSlotBuilder.setSlotType(SlotMachineType.MINE)
                   .setNumReels(4)
                   .setNumIcons(12)
                   .setTimePerIcon(80)
                   .setElementPositions(this.mineElementPosition)
-                  .setSlotSizePercent(160)
+                  .setSlotSizePercent(200)
                   .setSlotPadding(0.30)
                   .setSlotGradientDegree('130deg')
                   .setSlotStartColor('SlateBlue')

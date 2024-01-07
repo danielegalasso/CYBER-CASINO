@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DataService } from '../service/data.service';
+import { DataService } from '../model/services/data.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({

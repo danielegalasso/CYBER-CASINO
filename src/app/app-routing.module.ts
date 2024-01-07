@@ -7,11 +7,12 @@ import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
 import { LoginModuleComponent } from './login-module/login-module.component';
 import { RegisterModuleComponent } from './register-module/register-module.component';
-import { AuthGuardService } from './service/auth-guard.service';
+import { AuthGuardService } from './model/services/auth-guard.service';
 import { GenericSlotMachineComponent } from './generic-slot-machine/generic-slot-machine.component';
 import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot-machine.component';
 import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machine.component';
 import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.component';
+import {RouletteComponent} from "./roulette/roulette.component";
 
 const routes: Routes = [
   {
@@ -50,9 +51,13 @@ const routes: Routes = [
     component:RegisterModuleComponent,
     path: RouteConstants.register
   },
-  
+
   {component:MineSlotMachineComponent,
     path: RouteConstants.mineSlot,
+  },
+  {
+    component:RouletteComponent,
+    path: RouteConstants.roulette,
   }
 ];
 @NgModule({

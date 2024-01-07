@@ -1,7 +1,7 @@
 import { Component , OnInit, DoCheck} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationService } from '../model/services/authentication.service';
 
 @Component({
   selector: 'app-header',

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from '../model/slotMachine';
+import { SlotMachine, SlotMachineBuilder } from '../model/Games/SlotMachine/slotMachine';
+import { SlotMachineType } from '../model/Games/SlotMachine/SlotMachineType';
 
 @Component({
   selector: 'app-premium-slot-machine',
@@ -26,12 +27,12 @@ export class PremiumSlotMachineComponent {
 
   createPremiumSlot(): SlotMachine {
     let premiumSlotBuilder = new SlotMachineBuilder();
-    premiumSlotBuilder.setSlotType("premium")
+    premiumSlotBuilder.setSlotType(SlotMachineType.PREMIUM)
                   .setNumReels(5)
                   .setNumIcons(12)
                   .setTimePerIcon(80)
                   .setElementPositions(this.premiumElemPosition)
-                  .setSlotSizePercent(160)
+                  .setSlotSizePercent(200)
                   .setSlotPadding(0.30)
                   .setSlotGradientDegree('130deg')
                   .setSlotStartColor('yellow')

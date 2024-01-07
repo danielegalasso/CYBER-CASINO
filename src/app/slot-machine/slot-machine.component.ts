@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HostListener, AfterViewInit, Component, ElementRef, ViewChild, Input, OnInit } from '@angular/core';
-import { SlotMachine } from '../model/slotMachine';
+import { SlotMachine } from '../model/Games/SlotMachine/slotMachine';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-slot-machine',
@@ -18,11 +19,12 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
   reelsList: Array<Element> = [];
   shifters: Array<number> = [0, 0, 0];
 
-  result: Array<string> = [];;
+  result: Array<string> = [];
 
-  readonly additionalSpin: number = 5;
+  readonly additionalSpin: number = 10;
 
-  rolling: boolean = false;
+  rolling = new BehaviorSubject<boolean>(false);
+  rollingObservable = this.rolling.asObservable();
 
   @ViewChild('musicPlayer') audioPlayer!: ElementRef;
   @ViewChild('sfxPlayer') sfxPlayer!: ElementRef;
@@ -59,7 +61,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
       reel.style.border = "1px solid rgba(black, 0.3);";
       reel.style.borderRadius = "3px";
       reel.style.overflow = "hidden";
-      reel.style.backgroundImage = `url(../assets/slotMachine/${this.slotMachine.SlotType}/reels/${i}.jpg)`;
+      reel.style.backgroundImage = `url(../assets/slotMachine/${this.slotMachine.SlotType.toLowerCase()}/reels/${i}.jpg)`;
       reel.style.backgroundSize = "100%";
       reel.style.backgroundPosition = "0 0";
       reel.style.backgroundRepeat = "repeat-y";
@@ -93,7 +95,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
     let elem_pos: number = (this.slotMachine.ElementPositions.get(this.result[offset]))?.at(offset)!;
 
     //calculate the delta for the reel
-    const delta = (offset + 3 * (offset + 1) + additionalSpin) * this.slotMachine.NumIcons - (elem_pos - 1 + this.shifters[offset]) % this.slotMachine.NumIcons;
+    const delta = (offset + 2 * (offset + 1) + additionalSpin) * this.slotMachine.NumIcons - (elem_pos - 1 + this.shifters[offset]) % this.slotMachine.NumIcons;
 
     //calculate the new shifter value
     this.shifters[offset] = this.slotMachine.NumIcons - elem_pos + 1;
@@ -117,7 +119,6 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
       document.querySelector(".slots")?.classList.remove('win');
       this.winMode = false;
     }
-    this.getResult();
     this.playSpinSFX();
 
     Promise
@@ -129,7 +130,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
       .then(() => {
         this.stopSFX();
         this.checkWin();
-        this.rolling = false;
+        this.rolling.next(false);
       });
   }
 
@@ -172,19 +173,13 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  getResult(): void {
-    //get result from the server
-    //...
-    this.result = ['star', 'star', 'star', 'star'];
-  }
-
   private hasPlayed: boolean = false;
   @HostListener('document:click', ['$event'])
   musicPlay(): void {
     if (this.hasPlayed) return;
     this.hasPlayed = true;
     const audioElement: HTMLAudioElement = this.audioPlayer.nativeElement;
-    audioElement.src = `assets/slotMachine/${this.slotMachine.SlotType}/music/music.mp3`;
+    audioElement.src = `assets/slotMachine/${this.slotMachine.SlotType.toLowerCase()}/music/music.mp3`;
     audioElement.loop = true;
     //audioElement.load();
     audioElement.play();
@@ -200,7 +195,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
 
   playSFX(sfx: string): void {
     const audioElement: HTMLAudioElement = this.sfxPlayer.nativeElement;
-    audioElement.src = `assets/slotMachine/${this.slotMachine.SlotType}/sfx/${sfx}.mp3`;
+    audioElement.src = `assets/slotMachine/${this.slotMachine.SlotType.toLowerCase()}/sfx/${sfx}.mp3`;
     audioElement.loop = true;
     audioElement.load();
     audioElement.play();

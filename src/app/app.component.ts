@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from './model/slotMachine';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
@@ -24,11 +23,11 @@ export class AppComponent implements OnInit{
 
   checkRoute(url: string) {
     // Aggiungi altre condizioni se necessario
-    if (url === '/fruitSlot' || url === '/premiumSlot' || url === '/mineSlot') {
+    if (url === '/fruitSlot' || url === '/premiumSlot' || url === '/mineSlot' || url === '/roulette') {
       this.shouldDisplay = false;
     } else {
       this.shouldDisplay = true;
     }
   }
-  
+
 }

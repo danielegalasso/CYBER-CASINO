@@ -26,6 +26,7 @@ import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machi
 import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot-machine.component';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
+import { RouletteComponent } from './roulette/roulette.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FormsModule } from '@angular/forms';
     GenericSlotMachineComponent,
     FruitSlotMachineComponent,
     PremiumSlotMachineComponent,
+    RouletteComponent,
   ],
   imports: [
     BrowserModule,
