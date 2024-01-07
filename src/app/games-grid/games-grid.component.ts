@@ -35,7 +35,7 @@ export class GamesGridComponent implements OnInit, DoCheck{
     { nome: 'mineSlot', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 184442.png' },
     { nome: 'premiumSlot', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 185054.png' },
     { nome: 'roulette', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 184223.png' },
-    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'stallionSprint', url: '../../assets/GamesCopertine/Screenshot 2024-01-07 194534.png' },
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
