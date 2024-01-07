@@ -31,7 +31,7 @@ export class AuthenticationService {
                     this.login(username, password);
                 }
                 else {
-                    alert("Registration failed!");
+                    alert("Registration failed!\nUsername or email already in use!");
                 }
             });
     }
