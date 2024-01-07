@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RouletteComponent implements OnInit{
   ngOnInit() {
-    window.location.href="http://localhost:8080/provaMia/javasWheel.html";
+    window.location.href="http://localhost:8080/roulette/javasWheel.html";
   }
 
 }
