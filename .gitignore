@@ -42,6 +42,6 @@ testem.log
 Thumbs.db
 
 # Copyrighted files
-src/assets/slotMachine/fruit/music/music.mp3
-src/assets/slotMachine/premium/music/music.mp3
-src/assets/slotMachine/mine/music/music.mp3
+src/assets/slotMachine/FRUIT/music/music.mp3
+src/assets/slotMachine/PREMIUM/music/music.mp3
+src/assets/slotMachine/MINE/music/music.mp3
