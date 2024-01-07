@@ -61,7 +61,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
       reel.style.border = "1px solid rgba(black, 0.3);";
       reel.style.borderRadius = "3px";
       reel.style.overflow = "hidden";
-      reel.style.backgroundImage = `url(../assets/slotMachine/${this.slotMachine.SlotType}/reels/${i}.jpg)`;
+      reel.style.backgroundImage = `url(../assets/slotMachine/${this.slotMachine.SlotType.toLowerCase()}/reels/${i}.jpg)`;
       reel.style.backgroundSize = "100%";
       reel.style.backgroundPosition = "0 0";
       reel.style.backgroundRepeat = "repeat-y";
@@ -179,7 +179,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
     if (this.hasPlayed) return;
     this.hasPlayed = true;
     const audioElement: HTMLAudioElement = this.audioPlayer.nativeElement;
-    audioElement.src = `assets/slotMachine/${this.slotMachine.SlotType}/music/music.mp3`;
+    audioElement.src = `assets/slotMachine/${this.slotMachine.SlotType.toLowerCase()}/music/music.mp3`;
     audioElement.loop = true;
     //audioElement.load();
     audioElement.play();
@@ -195,7 +195,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
 
   playSFX(sfx: string): void {
     const audioElement: HTMLAudioElement = this.sfxPlayer.nativeElement;
-    audioElement.src = `assets/slotMachine/${this.slotMachine.SlotType}/sfx/${sfx}.mp3`;
+    audioElement.src = `assets/slotMachine/${this.slotMachine.SlotType.toLowerCase()}/sfx/${sfx}.mp3`;
     audioElement.loop = true;
     audioElement.load();
     audioElement.play();
