@@ -1,5 +1,8 @@
+import { GameType } from "./GameType";
+
 export interface GameInformation {
     sessionToken: string;
-    gameName: string;
+    gameType: GameType;
     bet: number;
+    additionalInfo: string | null;
 }

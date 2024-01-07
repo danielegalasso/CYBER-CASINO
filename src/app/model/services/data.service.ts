@@ -9,12 +9,12 @@ export class DataService {
     "Niente",
     "Bonus 5€",
     "Bonus 10€",
-    "Niente",
+    "Bonus 7€",
     "Bonus 1€",
-    "Niente",
+    "Bonus 20€",
     "Bonus 3€",
-    "Niente",
-    "Bonus 200€",
+    "Bonus 50€",
+    "Bonus 500€",
   ];
 
   optionSource: BehaviorSubject<String[]>;

@@ -12,6 +12,8 @@ import { AuthenticationService } from '../model/services/authentication.service'
 import { GamesService } from '../model/services/games.service';
 import { GameInformation } from '../model/Games/GameInformation';
 import { generate } from 'rxjs';
+import { GameType } from '../model/Games/GameType';
+import { DailySpinConstants } from '../model/Games/DailySpin/DailySpinConstants';
 
 //const COLORS = ['#f82', '#0bf', '#fb0', '#0fb', '#b0f', '#f0b', '#bf0'];
 const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
@@ -110,22 +112,21 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     }
     this.spinning = true;
 
-    let gameinfo: GameInformation = {"sessionToken": this.authService.getTokenValue(), "gameName": "DAILYSPIN", "bet": 0};
+    let gameinfo: GameInformation = {"sessionToken": this.authService.getTokenValue(), "gameType": GameType.DAILY_SPIN, "bet": 0, "additionalInfo": ""};
     this.gamesService.generateResult(gameinfo).subscribe(
       generatedGame => {
         console.log(generatedGame);
 
-        if (generatedGame.result == null) {
-          alert("You have already used your daily spin");
-          this.noSpinToday = true;
-          this.spinning = false;
-          return;
-        }
-
-        this.destinationIndex = 0;//parseInt(generatedGame.gameResult.at(0));
+        let amountWon = parseInt(generatedGame.result.at(0));
+        this.destinationIndex = DailySpinConstants.valueIndexMap.get(amountWon);
 
         if (!this.angVel)
           this.angVel = this.rand(0.25, 0.35);
+      },
+      error => {
+          this.noSpinToday = true;
+          this.spinning = false;
+          return;
       }
     )
   }

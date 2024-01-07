@@ -21,7 +21,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
 
   result: Array<string> = [];
 
-  readonly additionalSpin: number = 5;
+  readonly additionalSpin: number = 10;
 
   rolling = new BehaviorSubject<boolean>(false);
   rollingObservable = this.rolling.asObservable();
@@ -95,7 +95,7 @@ export class SlotMachineComponent implements OnInit, AfterViewInit {
     let elem_pos: number = (this.slotMachine.ElementPositions.get(this.result[offset]))?.at(offset)!;
 
     //calculate the delta for the reel
-    const delta = (offset + 3 * (offset + 1) + additionalSpin) * this.slotMachine.NumIcons - (elem_pos - 1 + this.shifters[offset]) % this.slotMachine.NumIcons;
+    const delta = (offset + 2 * (offset + 1) + additionalSpin) * this.slotMachine.NumIcons - (elem_pos - 1 + this.shifters[offset]) % this.slotMachine.NumIcons;
 
     //calculate the new shifter value
     this.shifters[offset] = this.slotMachine.NumIcons - elem_pos + 1;

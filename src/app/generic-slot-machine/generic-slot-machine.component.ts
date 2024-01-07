@@ -4,6 +4,8 @@ import { SlotMachineComponent } from '../slot-machine/slot-machine.component';
 import { GameInformation } from '../model/Games/GameInformation';
 import { AuthenticationService } from '../model/services/authentication.service';
 import { GamesService } from '../model/services/games.service';
+import { GameType } from '../model/Games/GameType';
+import { SlotMachineType } from '../model/Games/SlotMachine/SlotMachineType';
 
 @Component({
   selector: 'app-generic-slot-machine',
@@ -105,17 +107,19 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
 
     this.balance -= this.bet;
 
-    let gameinfo: GameInformation = {"sessionToken": this.authenticationService.getTokenValue(), "gameName": (this.slotMachine.SlotType + "slot").toUpperCase(), "bet": this.bet};
+    let gameinfo: GameInformation = {"sessionToken": this.authenticationService.getTokenValue(), "gameType": GameType.SLOT_MACHINE, "bet": this.bet, "additionalInfo": this.slotMachine.SlotType.toString()};
     this.gamesService.generateResult(gameinfo).subscribe(
-      generatedGame => {
-        if (generatedGame == null) {
+      gameResult => {
+        if (gameResult == null) {
           alert("Error while playing, please try again later");
           this.slotMachineComponent.rolling.next(false);
           return;
         }
-        console.log(generatedGame);
-        this.slotMachineComponent.result = generatedGame.result;
-        this.tmpBalance = generatedGame.balance;
+        console.log(gameResult);
+        console.log(gameResult.result);
+        console.log(gameResult.balance);
+        this.slotMachineComponent.result = gameResult.result;
+        this.tmpBalance = gameResult.balance;
         this.slotMachineComponent.rollAll();
       },
       error => {

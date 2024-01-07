@@ -30,7 +30,7 @@ export class FruitSlotMachineComponent {
     fruitSlotBuilder.setSlotType(SlotMachineType.FRUIT)
                   .setNumReels(4)
                   .setNumIcons(12)
-                  .setTimePerIcon(80)
+                  .setTimePerIcon(75)
                   .setElementPositions(this.fruitElemPosition)
                   .setSlotSizePercent(200)
                   .setSlotPadding(0.30)
