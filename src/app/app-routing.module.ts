@@ -13,6 +13,7 @@ import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot
 import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machine.component';
 import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.component';
 import {RouletteComponent} from "./roulette/roulette.component";
+import {HorseRaceComponent} from "./horse-race/horse-race.component";
 
 const routes: Routes = [
   {
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     component:RouletteComponent,
     path: RouteConstants.roulette,
+  },
+  {
+    component:HorseRaceComponent,
+    path: RouteConstants.stallionSprint,
   }
 ];
 @NgModule({

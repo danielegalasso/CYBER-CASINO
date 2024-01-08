@@ -17,7 +17,7 @@ export class AuthenticationService {
     private token:string = undefined;
 
     constructor(private http: HttpClient, private router:Router) { }
-    
+
     isAdmin():boolean {
         return this.credentials.username == "admin";
     }

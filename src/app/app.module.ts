@@ -27,6 +27,7 @@ import { PremiumSlotMachineComponent } from './premium-slot-machine/premium-slot
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { RouletteComponent } from './roulette/roulette.component';
+import { HorseRaceComponent } from './horse-race/horse-race.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { RouletteComponent } from './roulette/roulette.component';
     FruitSlotMachineComponent,
     PremiumSlotMachineComponent,
     RouletteComponent,
+    HorseRaceComponent,
   ],
   imports: [
     BrowserModule,
