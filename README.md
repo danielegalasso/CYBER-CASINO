@@ -8,28 +8,6 @@ CyberCasino is a group project done for the Web Application course at university
 - Domenico Visciglia
 - Federico Di Franco
 
-## TRY THE DEMO [HERE](https://stackblitz.com/~/github.com/danielegalasso/CYBER-CASINO)
-
-It will load a white Screen because in the app.component.html:
-
-```html
-<!-- Per vedere le slot di Ernesto decommenta questo codice
-
-<app-slot-ernesto></app-slot-ernesto>
-
--->
-
-
-
-<!-- Per vedere la Landing Page decommenta questo codice
-<body>
-    <app-header></app-header>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
-</body> 
--->
-```
-
 <br />
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
