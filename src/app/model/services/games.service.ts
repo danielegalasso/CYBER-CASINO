@@ -16,8 +16,6 @@ import { AuthenticationService } from "./authentication.service";
 export class GamesService {
     constructor(private http:HttpClient, private authService: AuthenticationService) {}
 
-
-
     generateResult(gameInformation: GameInformation):Observable<GameResult> {
         return this.http.post<GameResult>(BackendConstants.url + BackendConstants.play, gameInformation, {withCredentials: true});
     }
@@ -25,4 +23,6 @@ export class GamesService {
     getBalance():Observable<number> {
         return this.http.post<number>(BackendConstants.url + BackendConstants.getBalance,  this.authService.getToken(), {withCredentials: true});
     }
+
+
 }
