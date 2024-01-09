@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { SimpleMatch } from '../model/Games/SimpleMatch';
+import { GamesService } from '../model/services/games.service';
+
 
 @Component({
   selector: 'app-complex-image',
@@ -8,16 +11,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class ComplexImageComponent implements OnInit {
   @Output() changeView = new EventEmitter<void>();
 
+  constructor(private gamesService: GamesService) { }
+
   onButtonClick(): void {
     this.changeView.emit();
   }
 
-  users = [
-    { name: 'Jerry Wood', score: 948 },
-    { name: 'Brandon Barnes', score: 750 },
-    { name: 'Raymond Knight', score: 684 },
-    { name: 'Trevor McCormick', score: 335 },
-    { name: 'Andrew Fox', score: 296 }
+
+  leaderboard: SimpleMatch[] = [
   ];
 
   ngOnInit() {
@@ -147,7 +148,28 @@ export class ComplexImageComponent implements OnInit {
 
 
     });
+
+    this.updateLeaderboard();
+
+    //update leaderboard periodically
+    setInterval(() => {
+      this.updateLeaderboard();
+    }, 4000);
   }
 
-  
+  updating = false;
+  updateLeaderboard() {
+    if (this.updating) return;
+    this.updating = true;
+
+    //get latest results
+    this.gamesService.getLatestResults().subscribe((results) => {
+      this.leaderboard = results;
+      this.updating = false;
+    },
+      (error) => {
+        this.updating = false;
+      }
+    );
+  }
 }

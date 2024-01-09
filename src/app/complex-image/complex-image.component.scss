@@ -38,8 +38,9 @@ body{
 
 /* container */
 .container1 {
-	max-width: 300px;
-    width: 20vw;
+	max-width: 500px;
+	min-width: 370px;
+    width: auto;
 	height: auto;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;

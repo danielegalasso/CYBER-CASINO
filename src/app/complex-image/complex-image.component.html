@@ -46,9 +46,9 @@
             <h1>Leaderboard</h1>
         </div>
         <div class="body">
-            <li *ngFor="let user of users">
-                <mark>{{ user.name }}</mark>
-                <small>{{ user.score }}</small>
+            <li *ngFor="let match of leaderboard">
+                <mark>{{ match.username + " played " + match.game}}</mark>
+                <span>{{"+" + match.amount + "$"}}</span>
               </li>
         </div>
     </div>

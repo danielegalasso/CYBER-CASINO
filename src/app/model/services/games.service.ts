@@ -1,14 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Credentials } from "../Authentication/Credentials";
-import { AuthToken } from "../Authentication/AuthToken";
 import { BackendConstants } from "../backendConstants";
-import { RouteConstants } from "../routeConstants";
 import { GameInformation } from "../Games/GameInformation";
 import { Observable } from "rxjs";
 import { GameResult } from "../Games/GameResult";
 import { AuthenticationService } from "./authentication.service";
+import { SimpleMatch } from "../Games/SimpleMatch";
 
 @Injectable({
     providedIn: 'root'
@@ -24,5 +21,7 @@ export class GamesService {
         return this.http.post<number>(BackendConstants.url + BackendConstants.getBalance,  this.authService.getToken());
     }
 
-
+    getLatestResults(): Observable<SimpleMatch[]> {
+        return this.http.get<SimpleMatch[]>(BackendConstants.url + BackendConstants.getLatestResults);
+    }
 }
