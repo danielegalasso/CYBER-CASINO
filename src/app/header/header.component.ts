@@ -2,6 +2,7 @@ import { Component , OnInit, DoCheck} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthenticationService } from '../model/services/authentication.service';
+import { RouteConstants } from '../model/routeConstants';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit, DoCheck {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       // Controlla l'URL e imposta selectedNavItem in base alla condizione
-      if (event.url === '/bonus' && this.selectedNavItem !== 'Bonus') {
+      if (event.url === RouteConstants.dailySpin && this.selectedNavItem !== 'Bonus') {
         this.selectedNavItem = 'Bonus';
       }
       if (event.url === '/faq' && this.selectedNavItem !== 'FAQ') {

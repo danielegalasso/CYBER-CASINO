@@ -19,10 +19,10 @@ export class GamesService {
 
 
     generateResult(gameInformation: GameInformation):Observable<GameResult> {
-        return this.http.post<GameResult>(BackendConstants.url + BackendConstants.play, gameInformation, {withCredentials: true});
+        return this.http.post<GameResult>(BackendConstants.url + BackendConstants.play, gameInformation);
     }
 
     getBalance():Observable<number> {
-        return this.http.post<number>(BackendConstants.url + BackendConstants.getBalance,  this.authService.getToken(), {withCredentials: true});
+        return this.http.post<number>(BackendConstants.url + BackendConstants.getBalance,  this.authService.getToken());
     }
 }

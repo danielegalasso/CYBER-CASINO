@@ -1,7 +1,7 @@
 export var RouteConstants = {
     home: '',
     admin: 'admin',
-    bonus: 'bonus',
+    dailySpin: 'dailySpin',
     faq: 'faq',
     login: 'login',
     register: 'register',

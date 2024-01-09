@@ -1,46 +1,47 @@
 #wheelOfFortune {
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-  }
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+  
 
-  #wheel {
-    display: block;
-    width: 500px; /* Imposta la larghezza del canvas */
-    height: 500px; /* Imposta l'altezza del canvas */
-    /*aggiunti da me*/
-    border: 8px solid #6a0ac4;  /* Aggiunto stile del bordo */
-    border-radius: 50%;
-  }
+#wheel {
+  display: block;
+  width: 500px; /* Imposta la larghezza del canvas */
+  height: 500px; /* Imposta l'altezza del canvas */
+  /*aggiunti da me*/
+  border: 8px solid #6a0ac4;  /* Aggiunto stile del bordo */
+  border-radius: 50%;
+}
 
-  #spin {
-    font: 1.5em/0 sans-serif;
-    user-select: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 30%;
-    height: 30%;
-    margin: -15%;
-    background: #ffffff;
-    color: #6a0ac4;
-    box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
-    border-radius: 50%;
-    transition: 0.8s;
-  }
+#spin {
+  font: 1.5em/0 sans-serif;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  margin: -15%;
+  background: #ffffff;
+  color: #6a0ac4;
+  box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  transition: 0.8s;
+}
 
-  #spin::after {
-    content: "";
-    position: absolute;
-    top: -17px;
-    border: 10px solid transparent;
-    border-bottom-color: currentColor;
-    border-top: none;
-  }
+#spin::after {
+  content: "";
+  position: absolute;
+  top: -17px;
+  border: 10px solid transparent;
+  border-bottom-color: currentColor;
+  border-top: none;
+}
 
 .congratulations-message {
   font-size: 24px;
@@ -53,6 +54,7 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 /* Aggiungi questo stile se desideri un effetto hover */
 .congratulations-message:hover {
   background-color: #2b1d6b; /* Cambia il colore in blu al passaggio del mouse */
@@ -65,3 +67,10 @@
   text-align: center;
 }
 
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.0);
+}

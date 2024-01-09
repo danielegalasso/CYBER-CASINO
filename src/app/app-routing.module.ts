@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { RouteConstants } from './model/routeConstants';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HomeModuleComponent } from './home-module/home-module.component';
-import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
 import { LoginModuleComponent } from './login-module/login-module.component';
 import { RegisterModuleComponent } from './register-module/register-module.component';
@@ -14,6 +13,7 @@ import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machi
 import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.component';
 import {RouletteComponent} from "./roulette/roulette.component";
 import {HorseRaceComponent} from "./horse-race/horse-race.component";
+import { FreeSpinComponent } from './free-spin/free-spin.component';
 
 const routes: Routes = [
   {
@@ -28,17 +28,17 @@ const routes: Routes = [
   {
     component:FruitSlotMachineComponent,
     path: RouteConstants.fruitSlot,
-    //canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService]
   },
   {
     component:PremiumSlotMachineComponent,
     path: RouteConstants.premiumSlot,
-    //canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService]
   },
   {
-    component:BonusModuleComponent,
-    path: RouteConstants.bonus,
-    //canActivate: [AuthGuardService]
+    component:FreeSpinComponent,
+    path: RouteConstants.dailySpin,
+    canActivate: [AuthGuardService]
   },
   {
     component:FAQComponent,
@@ -55,14 +55,17 @@ const routes: Routes = [
 
   {component:MineSlotMachineComponent,
     path: RouteConstants.mineSlot,
+    canActivate: [AuthGuardService]
   },
   {
     component:RouletteComponent,
     path: RouteConstants.roulette,
+    canActivate: [AuthGuardService]
   },
   {
     component:HorseRaceComponent,
     path: RouteConstants.stallionSprint,
+    canActivate: [AuthGuardService]
   }
 ];
 @NgModule({

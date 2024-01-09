@@ -4,7 +4,4 @@ export var BackendConstants = {
     register: '/register',
     play: "/play",
     getBalance: "/getBalance",
-    
-
-    isAuthenticated: '/isAuthenticated',
 };

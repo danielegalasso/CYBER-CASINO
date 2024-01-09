@@ -1,3 +1,4 @@
+<body>
 <div id="wheelOfFortune">
   <audio id="wheelSound" #wheelSound>
     <source src="/assets/soundDailySpin/Tick.mp3" type="audio/mp3" >
@@ -10,15 +11,17 @@
 	<div #spin id="spin" (click)="spinner()">SPIN</div>
 </div>
 
+</body>
+
 <div *ngIf="showCongratulations" class="congratulations-message">
-    <ng-container *ngIf="bonusUscito === 'Niente'; else congratulations">
-      Ritenta domani, sarai più fortunato!
-    </ng-container>
-    <ng-template #congratulations>
-      Congratulazioni, hai vinto {{ bonusUscito }} euro!
-    </ng-template>
+  <ng-container *ngIf="bonusUscito === 'Niente'; else congratulations">
+    Ritenta domani, sarai più fortunato!
+  </ng-container>
+  <ng-template #congratulations>
+    Congratulazioni, hai vinto {{ bonusUscito }} euro!
+  </ng-template>
 </div>
+
 <div *ngIf="noSpinToday" class="error-message">
   Hai già giocato oggi, ritorna domani!
 </div>
-

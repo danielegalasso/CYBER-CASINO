@@ -15,7 +15,6 @@ import { AsyncPipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 import { FreeSpinComponent } from './free-spin/free-spin.component';
-import { BonusModuleComponent } from './bonus-module/bonus-module.component';
 import { FAQComponent } from './faq/faq.component';
 import { SlotMachineComponent } from "./slot-machine/slot-machine.component";
 import { LoginModuleComponent } from './login-module/login-module.component';
@@ -39,7 +38,6 @@ import { HorseRaceComponent } from './horse-race/horse-race.component';
     FooterComponent,
     HomeModuleComponent,
     FreeSpinComponent,
-    BonusModuleComponent,
     FAQComponent,
     LoginModuleComponent,
     RegisterModuleComponent,

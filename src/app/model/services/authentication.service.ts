@@ -24,7 +24,7 @@ export class AuthenticationService {
 
     register(username: string, email: string, password: string) {
         let simpleUser: SimpleUser = {"username": username, "email": email, "password": password};
-        this.http.post<boolean>(BackendConstants.url + BackendConstants.register, simpleUser, {withCredentials: true})
+        this.http.post<boolean>(BackendConstants.url + BackendConstants.register, simpleUser)
             .subscribe(response => {
                 if (response) {
                     alert("Registration successful!");

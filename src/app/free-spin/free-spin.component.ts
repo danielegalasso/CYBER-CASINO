@@ -24,30 +24,15 @@ const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
   templateUrl: './free-spin.component.html',
   styleUrl: './free-spin.component.scss'
 })
-export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
+export class FreeSpinComponent implements AfterViewInit, DoCheck {
 
-  constructor(private dataService: DataService, private authService: AuthenticationService, private gamesService: GamesService, private router: Router) {}
+  constructor(private authService: AuthenticationService, private gamesService: GamesService, private router: Router) {}
   ngDoCheck(): void {
     this.engine();
   }
 
-  lastSpinDate: Date;
-  ngOnInit() {
-    // Initial rotation
-    // Start engine
-
-    //localStorage.clear();   //DECOMMENTARE PER PROVARE AD OGNI AVVIO
-    // Carica la data dell'ultimo spin da LocalStorage
-    const lastSpinDateString = localStorage.getItem('lastSpinDate');
-    this.lastSpinDate = lastSpinDateString ? new Date(lastSpinDateString) : null;
-  }
   ngAfterViewInit(): void {
-    this.createWheel();
-  }
-
-  @Input() set options(values: string[]) {
-    console.log('Values', values);
-    this.sectors = values.map((opts, i) => {
+    this.sectors = DailySpinConstants.elements.map((opts, i) => {
       return {
         color: COLORS[(i >= COLORS.length ? i + 1 : i) % COLORS.length],
         label: opts,
@@ -58,6 +43,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
       this.createWheel();
     }
   }
+
   @ViewChild('wheel') wheel: ElementRef<HTMLCanvasElement>;
   @ViewChild('spin') spin: ElementRef;
   @ViewChild('wheelSound') wheelSound: ElementRef<HTMLAudioElement>;
