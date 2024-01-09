@@ -105,9 +105,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
           this.bet = 0;
     });
 
-    this.balance -= this.bet;
-
-    let gameinfo: GameInformation = {"sessionToken": this.authenticationService.getTokenValue(), "gameType": GameType.SLOT_MACHINE, "bet": this.bet, "additionalInfo": this.slotMachine.SlotType.toString()};
+    let gameinfo: GameInformation = {sessionToken: this.authenticationService.getTokenValue(), gameType: GameType.SLOT_MACHINE, bet: this.bet, betOn: ["a", "b"] , additionalInfo: this.slotMachine.SlotType.toString()};
     this.gamesService.generateResult(gameinfo).subscribe(
       gameResult => {
         if (gameResult == null) {

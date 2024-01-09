@@ -113,7 +113,7 @@ export class FreeSpinComponent implements OnInit, AfterViewInit, DoCheck {
     }
     this.spinning = true;
 
-    let gameinfo: GameInformation = {"sessionToken": this.authService.getTokenValue(), "gameType": GameType.DAILY_SPIN, "bet": 0, "additionalInfo": ""};
+    let gameinfo: GameInformation = {sessionToken: this.authService.getTokenValue(), gameType: GameType.DAILY_SPIN, bet: 0, betOn: null, additionalInfo: ""};
     this.gamesService.generateResult(gameinfo).subscribe(
       generatedGame => {
         console.log(generatedGame);
