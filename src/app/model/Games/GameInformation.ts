@@ -4,6 +4,6 @@ export interface GameInformation {
     sessionToken: string;
     gameType: GameType;
     bet: number;
-    betOn: string[];
+    betOn: Object[];
     additionalInfo: string | null;
 }
