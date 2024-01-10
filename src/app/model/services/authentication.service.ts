@@ -6,6 +6,7 @@ import { AuthToken } from "../Authentication/AuthToken";
 import { BackendConstants } from "../backendConstants";
 import { RouteConstants } from "../routeConstants";
 import { SimpleUser } from "../Authentication/SimpleUser";
+import { getErrorMessage } from "../ServerErrors";
 
 @Injectable({
     providedIn: 'root'
@@ -24,16 +25,7 @@ export class AuthenticationService {
 
     register(username: string, email: string, password: string) {
         let simpleUser: SimpleUser = {"username": username, "email": email, "password": password};
-        this.http.post<boolean>(BackendConstants.url + BackendConstants.register, simpleUser)
-            .subscribe(response => {
-                if (response) {
-                    alert("Registration successful!");
-                    this.login(username, password);
-                }
-                else {
-                    alert("Registration failed!\nUsername or email already in use!");
-                }
-            });
+        return this.http.post<boolean>(BackendConstants.url + BackendConstants.register, simpleUser);
     }
 
     login(username, password){
@@ -47,6 +39,10 @@ export class AuthenticationService {
                 }
                 this.setToken(response.token);
                 this.router.navigate([RouteConstants.home]);
+            },
+            error => {
+                console.log(error);
+                alert(getErrorMessage(error.error.message));
             });
     }
 

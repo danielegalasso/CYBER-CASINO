@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SimpleMatch } from '../model/Games/SimpleMatch';
 import { GamesService } from '../model/services/games.service';
+import { getErrorMessage } from '../model/ServerErrors';
 
 
 @Component({
@@ -168,6 +169,7 @@ export class ComplexImageComponent implements OnInit {
       this.updating = false;
     },
       (error) => {
+        alert(getErrorMessage(error.error.message));
         this.updating = false;
       }
     );

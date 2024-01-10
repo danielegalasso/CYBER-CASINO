@@ -6,6 +6,8 @@ import { AuthenticationService } from '../model/services/authentication.service'
 import { GamesService } from '../model/services/games.service';
 import { GameType } from '../model/Games/GameType';
 import { SlotMachineType } from '../model/Games/SlotMachine/SlotMachineType';
+import { error } from 'jquery';
+import { getErrorMessage } from '../model/ServerErrors';
 
 @Component({
   selector: 'app-generic-slot-machine',
@@ -31,6 +33,9 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
       this.balance = bal;
       if (this.balance == 0)
         this.bet = 0;
+    },
+    error => {
+      alert(getErrorMessage(error.error.message));
     });
   }
 
@@ -121,7 +126,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
         this.slotMachineComponent.rollAll();
       },
       error => {
-        alert(error.error.message);
+        alert(getErrorMessage(error.error.message));
         this.slotMachineComponent.rolling.next(false);
       }
     )
