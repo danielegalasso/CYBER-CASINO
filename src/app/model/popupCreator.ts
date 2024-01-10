@@ -22,9 +22,5 @@ export function createAlert(message: string) {
     newConfirmBox.setButtonLabels('Ok', '');
 
     // Simply open the popup and observe button click
-    newConfirmBox.openConfirmBox$().subscribe(resp => {
-      if(resp.clickedButtonID){
-        console.log('Button clicked: ', resp.clickedButtonID);
-      }
-    });
+    return newConfirmBox.openConfirmBox$();
 }

@@ -159,6 +159,7 @@ export class ComplexImageComponent implements OnInit {
     }, 4000);
   }
 
+
   updating = false;
   updateLeaderboard() {
     if (this.updating) return;
@@ -169,10 +170,11 @@ export class ComplexImageComponent implements OnInit {
       this.leaderboard = results;
       this.updating = false;
     },
-      (error) => {
-        createAlert(getErrorMessage(error.error.message));
-        this.updating = false;
-      }
-    );
+    (error) => {
+      createAlert(getErrorMessage(error.error.message)).subscribe(resp => {
+        if (resp.clickedButtonID)
+          this.updating = false;
+      });
+    });
   }
 }
