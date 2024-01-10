@@ -3,7 +3,7 @@ import { SlotMachine } from '../model/Games/SlotMachine/slotMachine';
 import { SlotMachineComponent } from '../slot-machine/slot-machine.component';
 import { GameInformation } from '../model/Games/GameInformation';
 import { AuthenticationService } from '../model/services/authentication.service';
-import { GamesService } from '../model/services/games.service';
+import { ApiCallerService } from '../model/services/apiCaller.service';
 import { GameType } from '../model/Games/GameType';
 import { getErrorMessage } from '../model/ServerErrors';
 import { createAlert } from '../model/popupCreator';
@@ -24,7 +24,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
   balance: number = 0;
   bet: number = 1;
 
-  constructor(private authenticationService: AuthenticationService, private gamesService: GamesService) {
+  constructor(private authenticationService: AuthenticationService, private gamesService: ApiCallerService) {
     this.initialized = false;
   }
 

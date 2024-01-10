@@ -5,6 +5,9 @@ export var BackendConstants = {
     play: "/play",
     getBalance: "/getBalance",
     getLatestResults: "/getLatestGamesResults",
+    setUserBan: "/setUserBan",
+    getLatestGamesResultsByUser: "/getadditionalXLatestGamesResultsByUser",
+    getLatestTransactionsByUser: "/getadditionalXLatestTransactionsByUser",
 
 
     MIN_USERNAME_LENGTH: 3,

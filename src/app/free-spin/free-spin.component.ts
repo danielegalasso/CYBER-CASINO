@@ -3,15 +3,11 @@ import {
   Component,
   DoCheck,
   ElementRef,
-  Input,
-  OnInit,
   ViewChild,
 } from '@angular/core';
-import { DataService } from '../model/services/data.service';
 import { AuthenticationService } from '../model/services/authentication.service';
-import { GamesService } from '../model/services/games.service';
+import { ApiCallerService } from '../model/services/apiCaller.service';
 import { GameInformation } from '../model/Games/GameInformation';
-import { generate } from 'rxjs';
 import { GameType } from '../model/Games/GameType';
 import { DailySpinConstants } from '../model/Games/DailySpin/DailySpinConstants';
 import { Router } from '@angular/router';
@@ -28,7 +24,7 @@ const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
 })
 export class FreeSpinComponent implements AfterViewInit, DoCheck {
 
-  constructor(private authService: AuthenticationService, private gamesService: GamesService, private router: Router) {}
+  constructor(private authService: AuthenticationService, private gamesService: ApiCallerService, private router: Router) {}
   ngDoCheck(): void {
     this.engine();
   }

@@ -4,6 +4,8 @@ var ErrorsMap = new Map<string, string>([
     ["USER_ALREADY_EXISTS", "An user with this username or email already exists"],
     ["USER_BALANCE_INSUFFICIENT", "Your balance is insufficient to play this game with the selected bet"],
     ["DAILY_SPIN_ALREADY_USED", "You have already used your daily spin today, come back tomorrow!"],
+    ["USER_BANNED", "Your account has been banned! If you think this is a mistake, please contact support"],
+    ["USER_NOT_ADMIN", "You are not an admin!"],
 ]);
 
 export function getErrorMessage(errorCode: string): string {

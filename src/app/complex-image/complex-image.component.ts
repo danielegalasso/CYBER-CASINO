@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SimpleMatch } from '../model/Games/SimpleMatch';
-import { GamesService } from '../model/services/games.service';
+import { ApiCallerService } from '../model/services/apiCaller.service';
 import { getErrorMessage } from '../model/ServerErrors';
 import { createAlert } from '../model/popupCreator';
 
@@ -13,7 +13,7 @@ import { createAlert } from '../model/popupCreator';
 export class ComplexImageComponent implements OnInit {
   @Output() changeView = new EventEmitter<void>();
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private gamesService: ApiCallerService) { }
 
   onButtonClick(): void {
     this.changeView.emit();
