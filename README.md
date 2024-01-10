@@ -40,3 +40,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 This project contains some assets for which attribution is required:
 - slot machine elements use images by upklyak taken on freepik at https://www.freepik.com/upklyak
 - slot machine sfx are taken from Pierre Cartoon Sounds at https://freesound.org/people/pierrecartoons1979/
+- horse race images were created by KITSANTAS FOTIOS

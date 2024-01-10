@@ -11,7 +11,6 @@ export class RouletteComponent implements OnInit{
   }
   ngOnInit() {
     const token = this.authService.getTokenValue();
-
     if (token){ //posso ometterlo in quanto se arriva qua è gia loggato quindi ha il token??
       const rouletteUrl = `http://localhost:8080/roulette/javasWheel.html?token=${token}`;
       window.location.href = rouletteUrl;
