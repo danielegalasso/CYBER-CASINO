@@ -28,6 +28,13 @@ import { FormsModule } from '@angular/forms';
 import { RouletteComponent } from './roulette/roulette.component';
 import { HorseRaceComponent } from './horse-race/horse-race.component';
 
+import {
+  NgxAwesomePopupModule,
+  DialogConfigModule,
+  ConfirmBoxConfigModule,
+  ToastNotificationConfigModule
+} from '@costlydeveloper/ngx-awesome-popup';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +68,10 @@ import { HorseRaceComponent } from './horse-race/horse-race.component';
     SlotMachineComponent,
     HttpClientModule,
     FormsModule,
+    NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
+    DialogConfigModule.forRoot(), // Needed for instantiating dynamic components.
+    ConfirmBoxConfigModule.forRoot(), // Needed for instantiating confirm boxes.
+    ToastNotificationConfigModule.forRoot() // Needed for instantiating toast notifications.
   ],
   providers: [DecimalPipe],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { BackendConstants } from "../backendConstants";
 import { RouteConstants } from "../routeConstants";
 import { SimpleUser } from "../Authentication/SimpleUser";
 import { getErrorMessage } from "../ServerErrors";
+import { createAlert } from "../popupCreator";
 
 @Injectable({
     providedIn: 'root'
@@ -34,7 +35,7 @@ export class AuthenticationService {
             .subscribe(response => {
                 console.log(response);
                 if (response == null) {
-                    alert("Login failed!");
+                    createAlert("Login failed!");
                     return;
                 }
                 this.setToken(response.token);
@@ -42,7 +43,7 @@ export class AuthenticationService {
             },
             error => {
                 console.log(error);
-                alert(getErrorMessage(error.error.message));
+                createAlert(getErrorMessage(error.error.message));
             });
     }
 

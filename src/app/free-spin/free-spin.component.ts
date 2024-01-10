@@ -16,6 +16,7 @@ import { GameType } from '../model/Games/GameType';
 import { DailySpinConstants } from '../model/Games/DailySpin/DailySpinConstants';
 import { Router } from '@angular/router';
 import { getErrorMessage } from '../model/ServerErrors';
+import { createAlert } from '../model/popupCreator';
 
 //const COLORS = ['#f82', '#0bf', '#fb0', '#0fb', '#b0f', '#f0b', '#bf0'];
 const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
@@ -111,7 +112,7 @@ export class FreeSpinComponent implements AfterViewInit, DoCheck {
           this.angVel = this.rand(0.25, 0.35);
       },
       error => {
-          alert(getErrorMessage(error.error.message));
+          createAlert(getErrorMessage(error.error.message));
           this.spinning = false;
           return;
       }

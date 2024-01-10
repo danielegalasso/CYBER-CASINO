@@ -1,13 +1,12 @@
 import { AfterViewInit, Component, HostListener, Input, OnInit, ViewChild } from '@angular/core';
-import { SlotMachine, SlotMachineBuilder } from '../model/Games/SlotMachine/slotMachine';
+import { SlotMachine } from '../model/Games/SlotMachine/slotMachine';
 import { SlotMachineComponent } from '../slot-machine/slot-machine.component';
 import { GameInformation } from '../model/Games/GameInformation';
 import { AuthenticationService } from '../model/services/authentication.service';
 import { GamesService } from '../model/services/games.service';
 import { GameType } from '../model/Games/GameType';
-import { SlotMachineType } from '../model/Games/SlotMachine/SlotMachineType';
-import { error } from 'jquery';
 import { getErrorMessage } from '../model/ServerErrors';
+import { createAlert } from '../model/popupCreator';
 
 @Component({
   selector: 'app-generic-slot-machine',
@@ -18,9 +17,16 @@ import { getErrorMessage } from '../model/ServerErrors';
 export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
   @Input() slotMachine!: SlotMachine;
 
+  initialized: boolean = false;
   playing: boolean = false;
 
-  constructor(private authenticationService: AuthenticationService, private gamesService: GamesService) { }
+  tmpBalance: number;
+  balance: number = 0;
+  bet: number = 1;
+
+  constructor(private authenticationService: AuthenticationService, private gamesService: GamesService) {
+    this.initialized = false;
+  }
 
   ngOnInit(): void {
     const styles = document.documentElement.style;
@@ -33,36 +39,20 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
       this.balance = bal;
       if (this.balance == 0)
         this.bet = 0;
+      this.initialized = true;
     },
     error => {
-      alert(getErrorMessage(error.error.message));
+      createAlert(getErrorMessage(error.error.message));
     });
   }
 
   @HostListener('window:keydown.Space', ['$event'])
   listenSpace(e: KeyboardEvent): void {
-      this.spinAction();
+      this.callSpinFunction();
   }
-
-  spinAction(event?: KeyboardEvent) {
-    this.callSpinFunction();
-    /*if (!event || event.key === ' ' || event.key === 'Spacebar') {
-      // Aggiungi qui la logica che vuoi eseguire quando si preme lo spazio
-      if (this.balance > this.bet){
-      this.balance -= this.bet;
-      console.log('Space pressed or button clicked');
-      this.callSpinFunction()
-      }
-
-    }*/
-  }
-
-  tmpBalance: number;
-  balance: number = 0;
-  bet: number = 1;
 
   addToBet() {
-    if(this.slotMachineComponent.rolling.value) {
+    if(!this.initialized || this.slotMachineComponent.rolling.value) {
       return;
     }
     // Incrementa il valore della scommessa
@@ -72,7 +62,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
   }
 
   deleteFromBet() {
-    if(this.slotMachineComponent.rolling.value) {
+    if(!this.initialized || this.slotMachineComponent.rolling.value) {
       return;
     }
     // Decrementa il valore della scommessa solo se è maggiore di zero
@@ -88,12 +78,12 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
 
   //disable all buttons when calling this function
   callSpinFunction() {
-    if (this.slotMachineComponent.rolling.value) {
+    if (!this.initialized || this.slotMachineComponent.rolling.value) {
       return;
     }
 
     if (this.bet == 0) {
-      alert("You have no money to bet!");
+      createAlert("You have no money to bet!");
       return;
     }
 
@@ -114,7 +104,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
     this.gamesService.generateResult(gameinfo).subscribe(
       gameResult => {
         if (gameResult == null) {
-          alert("Error while playing, please try again later");
+          createAlert("Error while playing, please try again later");
           this.slotMachineComponent.rolling.next(false);
           return;
         }
@@ -126,7 +116,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
         this.slotMachineComponent.rollAll();
       },
       error => {
-        alert(getErrorMessage(error.error.message));
+        createAlert(getErrorMessage(error.error.message));
         this.slotMachineComponent.rolling.next(false);
       }
     )
