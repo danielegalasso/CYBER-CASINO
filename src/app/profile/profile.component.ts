@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ApiCallerService } from '../model/services/apiCaller.service';
 import { SimpleTransaction } from '../model/SimpleTransaction';
 import { SimpleMatch } from '../model/Games/SimpleMatch';
+import {AuthenticationService} from "../model/services/authentication.service";
 
 @Component({
     selector: 'app-profile',
@@ -12,17 +13,22 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     latestTransactions: SimpleTransaction[] = [];
     latestGamesResults: SimpleMatch[] = [];
 
-    constructor(private apiCallerService: ApiCallerService) {}
+    constructor(private apiCallerService: ApiCallerService, private authService: AuthenticationService){}
 
     ngOnInit() {
         //per visualizzare l' HTML decommentare
-        //const htmlFilePath = 'assets/profile/profile.html';
-        //window.open(htmlFilePath, '_blank');
+        const token = this.authService.getTokenValue();
+        if (token){
+            const profileUrl = `assets/profile/profile.html?token=${token}`;
+            window.location.href = profileUrl;
+        }else {
+            console.error('Impossibile ottenere il token utente.');
+        }
     }
 
     ngAfterViewInit() {
         console.log('Profile component initialized');
-        this.loadLatestTransactions();
+        //this.loadLatestTransactions();
         this.loadLatestGamesResults();
     }
 
@@ -46,11 +52,9 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
     private passDataToThymeleaf() {
         // Passa le variabili al file HTML in assets utilizzando una variabile globale JavaScript
-        window['latestTransactions'] = this.latestTransactions;
+        //window['latestTransactions'] = this.latestTransactions;
         window['latestGamesResults'] = this.latestGamesResults;
 
         // Apro l'HTML dopo aver impostato le variabili
-        const htmlFilePath = 'assets/profile/profile.html';
-        window.open(htmlFilePath, '_blank');
     }
 }

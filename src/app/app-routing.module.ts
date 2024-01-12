@@ -14,6 +14,7 @@ import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.
 import {RouletteComponent} from "./roulette/roulette.component";
 import {HorseRaceComponent} from "./horse-race/horse-race.component";
 import {ProfileComponent} from "./profile/profile.component";
+import {FreeSpinComponent} from "./free-spin/free-spin.component";
 
 const routes: Routes = [
   {
@@ -62,6 +63,11 @@ const routes: Routes = [
   {
     component:ProfileComponent,
     path: RouteConstants.profile,
+  },
+  {
+    component:FreeSpinComponent,
+    path: RouteConstants.dailySpin,
+    canActivate: [AuthGuardService]
   }
 ];
 @NgModule({
