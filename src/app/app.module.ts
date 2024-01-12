@@ -27,6 +27,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { RouletteComponent } from './roulette/roulette.component';
 import { HorseRaceComponent } from './horse-race/horse-race.component';
+import { ProfileComponent } from './profile/profile.component';
 
 import {
   NgxAwesomePopupModule,
@@ -54,6 +55,7 @@ import {
     PremiumSlotMachineComponent,
     RouletteComponent,
     HorseRaceComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

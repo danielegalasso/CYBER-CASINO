@@ -13,7 +13,7 @@ import { FruitSlotMachineComponent } from './fruit-slot-machine/fruit-slot-machi
 import { MineSlotMachineComponent } from './mine-slot-machine/mine-slot-machine.component';
 import {RouletteComponent} from "./roulette/roulette.component";
 import {HorseRaceComponent} from "./horse-race/horse-race.component";
-import { FreeSpinComponent } from './free-spin/free-spin.component';
+import {ProfileComponent} from "./profile/profile.component";
 
 const routes: Routes = [
   {
@@ -28,17 +28,12 @@ const routes: Routes = [
   {
     component:FruitSlotMachineComponent,
     path: RouteConstants.fruitSlot,
-    canActivate: [AuthGuardService]
+    //canActivate: [AuthGuardService]
   },
   {
     component:PremiumSlotMachineComponent,
     path: RouteConstants.premiumSlot,
-    canActivate: [AuthGuardService]
-  },
-  {
-    component:FreeSpinComponent,
-    path: RouteConstants.dailySpin,
-    canActivate: [AuthGuardService]
+    //canActivate: [AuthGuardService]
   },
   {
     component:FAQComponent,
@@ -55,17 +50,18 @@ const routes: Routes = [
 
   {component:MineSlotMachineComponent,
     path: RouteConstants.mineSlot,
-    canActivate: [AuthGuardService]
   },
   {
     component:RouletteComponent,
     path: RouteConstants.roulette,
-    canActivate: [AuthGuardService]
   },
   {
     component:HorseRaceComponent,
     path: RouteConstants.stallionSprint,
-    canActivate: [AuthGuardService]
+  },
+  {
+    component:ProfileComponent,
+    path: RouteConstants.profile,
   }
 ];
 @NgModule({

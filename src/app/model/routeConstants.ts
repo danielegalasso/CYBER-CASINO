@@ -10,4 +10,5 @@ export var RouteConstants = {
     mineSlot: 'mineSlot',
     roulette: 'roulette',
     stallionSprint: 'stallionSprint',
+    profile: 'profile'
 };
