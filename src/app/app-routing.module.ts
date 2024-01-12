@@ -67,7 +67,7 @@ const routes: Routes = [
   {
     component:FreeSpinComponent,
     path: RouteConstants.dailySpin,
-    canActivate: [AuthGuardService]
+    //canActivate: [AuthGuardService]
   }
 ];
 @NgModule({
