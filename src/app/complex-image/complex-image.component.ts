@@ -36,6 +36,29 @@ export class ComplexImageComponent implements OnInit {
   ];
 
   ngOnInit() {
+    //test stuff
+    this.apiCallerService.setUserBan("aswasw", true).subscribe((results) => {
+      console.log(results);
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+    //------------------
+
+
+
+
+
+
     let roulette = document.getElementById('roulette') as HTMLElement;
     let sloth = document.getElementById('sloth') as HTMLElement;
     let four = document.getElementById('4') as HTMLElement;
@@ -178,7 +201,7 @@ export class ComplexImageComponent implements OnInit {
     this.updating = true;
 
     //get latest results
-    this.apiCallerService.getLatestResults().subscribe((results) => {
+    this.apiCallerService.getLatestResultsForLeaderboard().subscribe((results) => {
       this.leaderboard = results;
       this.updating = false;
     },

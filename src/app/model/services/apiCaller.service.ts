@@ -22,19 +22,35 @@ export class ApiCallerService {
         return this.http.post<number>(BackendConstants.url + BackendConstants.getBalance,  this.authService.getToken());
     }
 
-    getLatestResults(): Observable<SimpleMatch[]> {
+    getLatestResultsForLeaderboard(): Observable<SimpleMatch[]> {
         return this.http.get<SimpleMatch[]>(BackendConstants.url + BackendConstants.getLatestResults);
     }
 
     setUserBan(username: string, isBanned: boolean): Observable<void> {
-        return this.http.post<void>(BackendConstants.url + BackendConstants.setUserBan, {token: this.authService.getToken(), username: username, isBanned: isBanned});
+        const requestBody = {
+            "token": this.authService.getToken().token,
+            "username": username,
+            "isBanned": String(isBanned)
+        };
+
+        return this.http.post<void>(BackendConstants.url + BackendConstants.setUserBan, requestBody);
     }
 
     getLatestTransactionsByUser(additionalTransactionsToLoad: number): Observable<SimpleTransaction[]> {
-        return this.http.post<SimpleTransaction[]>(BackendConstants.url + BackendConstants.getLatestTransactionsByUser, {token: this.authService.getToken(), additionalTransactionsToLoad: additionalTransactionsToLoad});
+        const requestBody = {
+            "token": this.authService.getToken().token,
+            "additionalTransactionsToLoad": additionalTransactionsToLoad.toString()
+        };
+
+        return this.http.post<SimpleTransaction[]>(BackendConstants.url + BackendConstants.getLatestTransactionsByUser, requestBody);
     }
 
-    getLatestGamesResultsByUser(additionalGamesToLoad: number): Observable<SimpleMatch[]> {
-        return this.http.post<SimpleMatch[]>(BackendConstants.url + BackendConstants.getLatestGamesResultsByUser, {token: this.authService.getToken(), additionalGamesToLoad: additionalGamesToLoad});
+    getLatestGamesResultsByUser(additionalMatchesToLoad: number): Observable<SimpleMatch[]> {
+        const requestBody = {
+            "token": this.authService.getToken().token,
+            "additionalMatchesToLoad": additionalMatchesToLoad.toString()
+        };
+
+        return this.http.post<SimpleMatch[]>(BackendConstants.url + BackendConstants.getLatestGamesResultsByUser, requestBody);
     }
 }
