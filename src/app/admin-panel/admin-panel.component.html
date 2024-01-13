@@ -14,26 +14,30 @@
   <table class="table table-striped" style="margin-bottom: 60vh;">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Email</th>
         <th scope="col">Name</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Last spin</th>
         <th scope="col">Satus</th>
       </tr>
     </thead>
     <tbody>
-      @for (person of people$ | async; track person.name; let i = $index) {
+      @for (player of people$ | async; track player.username; let i = $index) {
         <tr>
-          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ player.email }}</td>
           <td>
-            <ngb-highlight [result]="person.name" [term]="filter.value" />
+            <ngb-highlight [result]="player.username" [term]="filter.value" />
           </td>
+          <td>{{ player.balance }}</td>
+          <td>{{ player.lastSpin }}</td>
           <td>
             
-            <div *ngIf="person.banned == false; else isBanned">   
-              <button type="button" class="btn btn-success" (click)="toggleStatus(person)">Active</button>
+            <div *ngIf="player.isBanned == false; else isBanned">   
+              <button type="button" class="btn btn-success" (click)="toggleStatus(player)">Active</button>
             </div>
             
             <ng-template #isBanned>
-              <button type="button" class="btn btn-danger"  (click)="toggleStatus(person)">Banned</button>
+              <button type="button" class="btn btn-danger"  (click)="toggleStatus(player)">Banned</button>
             </ng-template>
           
           </td>

@@ -7,6 +7,7 @@ import { GameResult } from "../Games/GameResult";
 import { AuthenticationService } from "./authentication.service";
 import { SimpleMatch } from "../Games/SimpleMatch";
 import { SimpleTransaction } from "../SimpleTransaction";
+import { Player } from "../Player";
 
 @Injectable({
     providedIn: 'root'
@@ -26,14 +27,19 @@ export class ApiCallerService {
         return this.http.get<SimpleMatch[]>(BackendConstants.url + BackendConstants.getLatestResults);
     }
 
-    setUserBan(username: string, isBanned: boolean): Observable<void> {
+    getListOfAllUsers(): Observable<Player[]> {
+        return this.http.post<Player[]>(BackendConstants.url + BackendConstants.getAllUsers, this.authService.getToken());
+    
+    }
+
+    setUserBan(username: string, isBanned: boolean): Observable<boolean> {
         const requestBody = {
             "token": this.authService.getToken().token,
             "username": username,
             "isBanned": String(isBanned)
         };
 
-        return this.http.post<void>(BackendConstants.url + BackendConstants.setUserBan, requestBody);
+        return this.http.post<boolean>(BackendConstants.url + BackendConstants.setUserBan, requestBody);
     }
 
     getLatestTransactionsByUser(additionalTransactionsToLoad: number): Observable<SimpleTransaction[]> {

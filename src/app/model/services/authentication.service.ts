@@ -13,15 +13,22 @@ import { createAlert } from "../popupCreator";
     providedIn: 'root'
 })
 export class AuthenticationService {
-
-    private credentials: Credentials;
     readonly tokenName = 'sessionToken';
     private token:string = undefined;
 
     constructor(private http: HttpClient, private router:Router) { }
 
     isAdmin():boolean {
-        return this.credentials.username == "admin";
+        if (this.getTokenValue() == undefined) {
+            return false;
+        }
+        let tokenValue = this.getTokenValue();
+        let decodedTokenValue = atob(tokenValue);
+
+        //split by :
+        let decodedTokenValueSplit = decodedTokenValue.split(':');
+        let username = decodedTokenValueSplit[0];
+        return username == "admin";
     }
 
     register(username: string, email: string, password: string) {
@@ -30,8 +37,8 @@ export class AuthenticationService {
     }
 
     login(username, password){
-        this.credentials = {"username": username, "password": password};
-        this.http.post<AuthToken>(BackendConstants.url + BackendConstants.login, this.credentials)
+        let credentials: Credentials = {"username": username, "password": password};
+        this.http.post<AuthToken>(BackendConstants.url + BackendConstants.login, credentials)
             .subscribe(response => {
                 console.log(response);
                 if (response == null) {
