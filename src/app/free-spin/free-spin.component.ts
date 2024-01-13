@@ -24,7 +24,7 @@ const COLORS = ['#2b1d6b', '#4e06c2', '#7f14c7'];
 })
 export class FreeSpinComponent implements AfterViewInit, DoCheck {
 
-  constructor(private authService: AuthenticationService, private gamesService: ApiCallerService, private router: Router) {}
+  constructor(private authService: AuthenticationService, private apiCallerService: ApiCallerService, private router: Router) {}
   ngDoCheck(): void {
     this.engine();
   }
@@ -97,7 +97,7 @@ export class FreeSpinComponent implements AfterViewInit, DoCheck {
     this.spinning = true;
 
     let gameinfo: GameInformation = {sessionToken: this.authService.getTokenValue(), gameType: GameType.DAILY_SPIN, bet: 0, betOn: null, additionalInfo: ""};
-    this.gamesService.generateResult(gameinfo).subscribe(
+    this.apiCallerService.generateResult(gameinfo).subscribe(
       generatedGame => {
         console.log(generatedGame);
 

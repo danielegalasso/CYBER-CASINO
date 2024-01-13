@@ -24,7 +24,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
   balance: number = 0;
   bet: number = 1;
 
-  constructor(private authenticationService: AuthenticationService, private gamesService: ApiCallerService) {
+  constructor(private authenticationService: AuthenticationService, private apiCallerService: ApiCallerService) {
     this.initialized = false;
   }
 
@@ -34,7 +34,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
   }
 
   ngAfterViewInit(): void {
-    this.gamesService.getBalance().subscribe(bal => {
+    this.apiCallerService.getBalance().subscribe(bal => {
       console.log(bal);
       this.balance = bal;
       if (this.balance == 0)
@@ -101,7 +101,7 @@ export class GenericSlotMachineComponent implements OnInit, AfterViewInit{
     });
 
     let gameinfo: GameInformation = {sessionToken: this.authenticationService.getTokenValue(), gameType: GameType.SLOT_MACHINE, bet: this.bet, betOn: null , additionalInfo: this.slotMachine.SlotType.toString()};
-    this.gamesService.generateResult(gameinfo).subscribe(
+    this.apiCallerService.generateResult(gameinfo).subscribe(
       gameResult => {
         if (gameResult == null) {
           createAlert("Error while playing, please try again later");

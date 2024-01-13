@@ -16,7 +16,7 @@ import { RouteConstants } from '../model/routeConstants';
 export class ComplexImageComponent implements OnInit {
   @Output() changeView = new EventEmitter<void>();
 
-  constructor(private authService: AuthenticationService, private gamesService: ApiCallerService, private router: Router) { }
+  constructor(private authService: AuthenticationService, private apiCallerService: ApiCallerService, private router: Router) { }
 
   onButtonClick(): void {
     this.changeView.emit();
@@ -178,7 +178,7 @@ export class ComplexImageComponent implements OnInit {
     this.updating = true;
 
     //get latest results
-    this.gamesService.getLatestResults().subscribe((results) => {
+    this.apiCallerService.getLatestResults().subscribe((results) => {
       this.leaderboard = results;
       this.updating = false;
     },
