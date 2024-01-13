@@ -3,6 +3,9 @@ import { SimpleMatch } from '../model/Games/SimpleMatch';
 import { ApiCallerService } from '../model/services/apiCaller.service';
 import { getErrorMessage } from '../model/ServerErrors';
 import { createAlert } from '../model/popupCreator';
+import { AuthenticationService } from '../model/services/authentication.service';
+import { Router } from '@angular/router';
+import { RouteConstants } from '../model/routeConstants';
 
 
 @Component({
@@ -13,10 +16,19 @@ import { createAlert } from '../model/popupCreator';
 export class ComplexImageComponent implements OnInit {
   @Output() changeView = new EventEmitter<void>();
 
-  constructor(private gamesService: ApiCallerService) { }
+  constructor(private authService: AuthenticationService, private gamesService: ApiCallerService, private router: Router) { }
 
   onButtonClick(): void {
     this.changeView.emit();
+  }
+
+  openFreeSpin() {
+    if (this.authService.isAuthenticated()) {
+      this.router.navigate(['/' + RouteConstants.dailySpin]);
+    }
+    else {
+      this.router.navigate(['/' + RouteConstants.login]);
+    }
   }
 
 
