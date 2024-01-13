@@ -24,17 +24,17 @@ const routes: Routes = [
   {
     component:AdminPanelComponent,
     path: RouteConstants.admin,
-    //canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService]
   },
   {
     component:FruitSlotMachineComponent,
     path: RouteConstants.fruitSlot,
-    //canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService]
   },
   {
     component:PremiumSlotMachineComponent,
     path: RouteConstants.premiumSlot,
-    //canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService]
   },
   {
     component:FAQComponent,
@@ -51,23 +51,27 @@ const routes: Routes = [
 
   {component:MineSlotMachineComponent,
     path: RouteConstants.mineSlot,
+    canActivate: [AuthGuardService]
   },
   {
     component:RouletteComponent,
     path: RouteConstants.roulette,
+    canActivate: [AuthGuardService]
   },
   {
     component:HorseRaceComponent,
     path: RouteConstants.stallionSprint,
+    canActivate: [AuthGuardService]
   },
   {
     component:ProfileComponent,
     path: RouteConstants.profile,
+    canActivate: [AuthGuardService]
   },
   {
     component:FreeSpinComponent,
     path: RouteConstants.dailySpin,
-    //canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService]
   }
 ];
 @NgModule({
