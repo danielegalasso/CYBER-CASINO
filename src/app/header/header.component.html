@@ -25,6 +25,8 @@
 
     <div *ngIf="isLoggedIn; else notLoggedInTemplate">
 
+      <button class="btn btn-info my-2 my-sm-0 mr-2" type="submit" id="balanceBtn" disabled>Balance: {{ balanceValue }}€</button>
+
       <button *ngIf="isAdmin" class="btn btn-warning my-2 my-sm-0 mr-2" id = 'adminButton' [routerLink]="['/admin']">Admin Panel</button>
 
       <button class="btn btn-outline-danger my-2 my-sm-0 mr-2" type="submit" (click)="signOut()">Sign Out</button>
@@ -41,7 +43,6 @@
     </div>
 
     <ng-template #notLoggedInTemplate>
-
       <button class="btn btn-outline-primary my-2 my-sm-0 mr-2" type="submit" [routerLink]="['/login']">Sign In</button>
       <button class="btn btn-primary my-2 my-sm-0 mr-4" type="submit" [routerLink]="['/register']" >Sign On</button>
 

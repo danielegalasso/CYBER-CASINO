@@ -11,6 +11,7 @@ import { RouteConstants } from '../model/routeConstants';
 })
 export class HeaderComponent implements OnInit, DoCheck {
 
+
   constructor(private router: Router, private authService: AuthenticationService) {
     
   }
@@ -81,4 +82,5 @@ printIsLoggedIn(): void {
   }, 2000);
 }
 
+balanceValue: number = 100;
 }
