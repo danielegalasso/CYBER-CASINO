@@ -29,7 +29,8 @@ body{
 .slots {
 	
 	position: absolute;
-    top: 100vh;
+
+    top: 107vh;
     left: 50vw;
     transform: translate(-50%, -50%);
 	width: calc($width_helper * $icon_width);
