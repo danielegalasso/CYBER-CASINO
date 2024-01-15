@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit, AfterViewInit {
     constructor(private apiCallerService: ApiCallerService, private authService: AuthenticationService){}
 
     ngOnInit() {
+
         //per visualizzare l' HTML decommentare
         const token = this.authService.getTokenValue();
         if (token){
@@ -24,12 +25,16 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         }else {
             console.error('Impossibile ottenere il token utente.');
         }
+
+      this.loadLatestGamesResults();
     }
 
     ngAfterViewInit() {
+      /*
         console.log('Profile component initialized');
         //this.loadLatestTransactions();
         this.loadLatestGamesResults();
+       */
     }
 
     loadLatestTransactions() {
@@ -37,7 +42,8 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         this.apiCallerService.getLatestTransactionsByUser(additionalTransactionsToLoad)
             .subscribe(transactions => {
                 this.latestTransactions = transactions;
-                this.passDataToThymeleaf(); // Chiamare il metodo per passare i dati a Thymeleaf
+                console.log(this.latestTransactions);
+                //this.passDataToThymeleaf(); // Chiamare il metodo per passare i dati a Thymeleaf
             });
     }
 
@@ -46,7 +52,8 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         this.apiCallerService.getLatestGamesResultsByUser(additionalGamesToLoad)
             .subscribe(games => {
                 this.latestGamesResults = games;
-                this.passDataToThymeleaf(); // Chiamare il metodo per passare i dati a Thymeleaf
+                console.log(this.latestGamesResults);
+                //this.passDataToThymeleaf(); // Chiamare il metodo per passare i dati a Thymeleaf
             });
     }
 
