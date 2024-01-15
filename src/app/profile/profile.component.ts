@@ -9,12 +9,25 @@ import {AuthenticationService} from "../model/services/authentication.service";
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit, AfterViewInit {
+export class ProfileComponent implements OnInit {
     latestTransactions: SimpleTransaction[] = [];
     latestGamesResults: SimpleMatch[] = [];
 
     constructor(private apiCallerService: ApiCallerService, private authService: AuthenticationService){}
 
+
+    ngOnInit() {
+        const token = this.authService.getTokenValue();
+        if (token){ //posso ometterlo in quanto se arriva qua è gia loggato quindi ha il token??
+          const profileUrl = `http://localhost:8080/profile?token=${token}`;
+          window.location.href = profileUrl;
+        }else {
+          console.error('Impossibile ottenere il token utente.');
+        }
+      }
+
+
+    /*
     ngOnInit() {
 
         //per visualizzare l' HTML decommentare
@@ -28,13 +41,13 @@ export class ProfileComponent implements OnInit, AfterViewInit {
 
       this.loadLatestGamesResults();
     }
-
+    
     ngAfterViewInit() {
-      /*
+      
         console.log('Profile component initialized');
         //this.loadLatestTransactions();
         this.loadLatestGamesResults();
-       */
+       
     }
 
     loadLatestTransactions() {
@@ -57,11 +70,12 @@ export class ProfileComponent implements OnInit, AfterViewInit {
             });
     }
 
+    
     private passDataToThymeleaf() {
         // Passa le variabili al file HTML in assets utilizzando una variabile globale JavaScript
         //window['latestTransactions'] = this.latestTransactions;
         window['latestGamesResults'] = this.latestGamesResults;
 
         // Apro l'HTML dopo aver impostato le variabili
-    }
+    }*/
 }
