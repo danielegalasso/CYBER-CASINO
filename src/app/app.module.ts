@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import { RouletteComponent } from './roulette/roulette.component';
 import { HorseRaceComponent } from './horse-race/horse-race.component';
 import { ProfileComponent } from './profile/profile.component';
+import { BlackjackComponent } from './blackjack/blackjack.component';
 import {
   NgxAwesomePopupModule,
   DialogConfigModule,
@@ -55,6 +56,7 @@ import {
     RouletteComponent,
     HorseRaceComponent,
     ProfileComponent,
+    BlackjackComponent,
   ],
   imports: [
     BrowserModule,
