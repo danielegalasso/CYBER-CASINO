@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
     ngOnInit() {
         const token = this.authService.getTokenValue();
         if (token){ //posso ometterlo in quanto se arriva qua è gia loggato quindi ha il token??
-          const profileUrl = `http://localhost:8080/profile?token=${token}`;
+          const profileUrl = `http://localhost:8080/profile/profile.html?token=${token}`;
           window.location.href = profileUrl;
         }else {
           console.error('Impossibile ottenere il token utente.');
@@ -28,26 +28,13 @@ export class ProfileComponent implements OnInit {
 
 
     /*
-    ngOnInit() {
 
-        //per visualizzare l' HTML decommentare
-        const token = this.authService.getTokenValue();
-        if (token){
-            const profileUrl = `assets/profile/profile.html?token=${token}`;
-            window.location.href = profileUrl;
-        }else {
-            console.error('Impossibile ottenere il token utente.');
-        }
-
-      this.loadLatestGamesResults();
-    }
-    
     ngAfterViewInit() {
-      
+
         console.log('Profile component initialized');
         //this.loadLatestTransactions();
         this.loadLatestGamesResults();
-       
+
     }
 
     loadLatestTransactions() {
@@ -70,7 +57,7 @@ export class ProfileComponent implements OnInit {
             });
     }
 
-    
+
     private passDataToThymeleaf() {
         // Passa le variabili al file HTML in assets utilizzando una variabile globale JavaScript
         //window['latestTransactions'] = this.latestTransactions;
