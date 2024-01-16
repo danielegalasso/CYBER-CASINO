@@ -105,10 +105,10 @@ export class FreeSpinComponent implements AfterViewInit, DoCheck {
         let amountWon = parseInt(generatedGame.result.at(0));
         this.destinationIndex = DailySpinConstants.valueIndexMap.get(amountWon);
 
-        // Se la velocità angolare è zero, imposta un valore casuale tra 0.25 e 0.35
         // all'inizio la ruota sta ferma, quindi la velocità angolare è zero
         if (!this.angVel)
-          this.angVel = this.rand(0.25, 0.35);
+          //this.angVel = this.rand(0.25, 0.35);
+          this.angVel = 0.25;
       },
       error => {
           createAlert(getErrorMessage(error.error.message));
@@ -184,6 +184,8 @@ export class FreeSpinComponent implements AfterViewInit, DoCheck {
       // Mostriamo il messaggio di congratulazioni
       this.showCongratulations = true;
       this.spinning = false;
+
+      this.createWheel();
     }
 
     if (this.angVel >= 0.0028) {
