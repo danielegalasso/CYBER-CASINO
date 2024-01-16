@@ -28,7 +28,6 @@ import { FormsModule } from '@angular/forms';
 import { RouletteComponent } from './roulette/roulette.component';
 import { HorseRaceComponent } from './horse-race/horse-race.component';
 import { ProfileComponent } from './profile/profile.component';
-
 import {
   NgxAwesomePopupModule,
   DialogConfigModule,
@@ -70,6 +69,7 @@ import {
     SlotMachineComponent,
     HttpClientModule,
     FormsModule,
+    NgbModule,
     NgxAwesomePopupModule.forRoot(), // Essential, mandatory main module.
     DialogConfigModule.forRoot(), // Needed for instantiating dynamic components.
     ConfirmBoxConfigModule.forRoot(), // Needed for instantiating confirm boxes.
