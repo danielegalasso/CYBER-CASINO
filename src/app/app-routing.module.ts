@@ -15,6 +15,7 @@ import {RouletteComponent} from "./roulette/roulette.component";
 import {HorseRaceComponent} from "./horse-race/horse-race.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {FreeSpinComponent} from "./free-spin/free-spin.component";
+import {BlackjackComponent} from "./blackjack/blackjack.component";
 
 const routes: Routes = [
   {
@@ -71,6 +72,11 @@ const routes: Routes = [
   {
     component:FreeSpinComponent,
     path: RouteConstants.dailySpin,
+    canActivate: [AuthGuardService]
+  },
+  {
+    component:BlackjackComponent,
+    path: RouteConstants.blackjack,
     canActivate: [AuthGuardService]
   }
 ];
