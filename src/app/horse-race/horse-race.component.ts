@@ -13,7 +13,10 @@ export class HorseRaceComponent implements OnInit {
     const token = this.authService.getTokenValue();
     if (token) { //posso ometterlo in quanto se arriva qua è gia loggato quindi ha il token??
       const horseRaceUrl = `http://localhost:8080/horseRacing/index.html?token=${token}`;
-      window.location.href = horseRaceUrl;
+      setTimeout(() => {
+        window.location.href = horseRaceUrl;
+      }, 300);
+      //window.location.href = horseRaceUrl;
       //window.location.href="http://localhost:8080/horseRacing/index.html";
 
     }else {

@@ -13,8 +13,11 @@ export class RouletteComponent implements OnInit{
     const token = this.authService.getTokenValue();
     if (token){ //posso ometterlo in quanto se arriva qua è gia loggato quindi ha il token??
       const rouletteUrl = `http://localhost:8080/roulette/javasWheel.html?token=${token}`;
-      window.location.href = rouletteUrl;
-      //window.location.href="http://localhost:8080/roulette/javasWheel.html";
+      // Ritarda la navigazione di due secondi
+      setTimeout(() => {
+        window.location.href = rouletteUrl;
+      }, 300);
+      //window.location.href = rouletteUrl;
     }else {
       console.error('Impossibile ottenere il token utente.');
     }
