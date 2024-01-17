@@ -16,6 +16,7 @@ export class ProfileComponent implements OnInit {
     constructor(private apiCallerService: ApiCallerService, private authService: AuthenticationService){}
 
 
+
     ngOnInit() {
         const token = this.authService.getTokenValue();
         if (token){ //posso ometterlo in quanto se arriva qua è gia loggato quindi ha il token??
