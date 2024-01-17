@@ -78,6 +78,10 @@ const routes: Routes = [
     component:BlackjackComponent,
     path: RouteConstants.blackjack,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: '**',
+    redirectTo: RouteConstants.home
   }
 ];
 @NgModule({
