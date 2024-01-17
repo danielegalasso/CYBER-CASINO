@@ -18,20 +18,32 @@ export class HeaderComponent implements OnInit, DoCheck {
   
   ngOnInit() {
     // Aggiungi un ascoltatore per gli eventi di navigazione
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      // Controlla l'URL e imposta selectedNavItem in base alla condizione
-      if (event.url === RouteConstants.dailySpin && this.selectedNavItem !== 'Bonus') {
-        this.selectedNavItem = 'Bonus';
-      }
-      if (event.url === '/faq' && this.selectedNavItem !== 'FAQ') {
-        this.selectedNavItem = 'FAQ';
-      }
-      if (event.url === '/admin' || event.url === '/login' || event.url === '/register') {
-        this.selectedNavItem = '';
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Ottieni la parte finale dell'URL dopo l'ultima barra
+        const urlParts = event.url.split('/');
+        const lastPart = urlParts[urlParts.length - 1];
+
+        // Aggiorna selectedNavItem in base all'URL
+        switch (lastPart) {
+          case '':
+            this.selectedNavItem = 'Games';
+            break;
+          case 'dailySpin':
+            this.selectedNavItem = 'Bonus';
+            break;
+          case 'faq':
+            this.selectedNavItem = 'FAQ';
+            break;
+          default:
+            this.selectedNavItem = '';
+            break;
+
+          // Aggiungi altri casi se necessario
+        }
       }
     });
+
 
     this.isLoggedIn = this.authService.isAuthenticated();
     this.isAdmin = this.authService.isAdmin();
