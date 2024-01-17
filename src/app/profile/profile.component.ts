@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
     ngOnInit() {
         const token = this.authService.getTokenValue();
         if (token){ //posso ometterlo in quanto se arriva qua è gia loggato quindi ha il token??
-          const profileUrl = `http://localhost:8080/profile/profile.html?token=${token}`;
+          const profileUrl = `http://localhost:8080/profile?token=${token}`;
           window.location.href = profileUrl;
         }else {
           console.error('Impossibile ottenere il token utente.');

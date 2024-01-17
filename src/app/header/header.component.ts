@@ -1,10 +1,7 @@
 import { Component , OnInit, DoCheck} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { filter } from 'rxjs/operators';
 import { AuthenticationService } from '../model/services/authentication.service';
-import { RouteConstants } from '../model/routeConstants';
 import { ApiCallerService } from '../model/services/apiCaller.service';
-import { error } from 'jquery';
 import { getErrorMessage } from '../model/ServerErrors';
 
 @Component({
@@ -55,6 +52,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.printIsLoggedIn();
   }
 
+  gettingBalance = false;
   ngDoCheck() {
     // Monitora i cambiamenti nella funzione isAuthenticated e aggiorna isLoggedIn
     const isAuthenticated = this.authService.isAuthenticated();
@@ -67,12 +65,15 @@ export class HeaderComponent implements OnInit, DoCheck {
       }
     }
 
-    if (this.isLoggedIn) {
+    if (this.isLoggedIn && !this.gettingBalance) {
+      this.gettingBalance = true;
       this.apiCallerService.getBalance()
         .subscribe(balance => {
           this.balanceValue = balance;
+          this.gettingBalance = false;
         }, error => {
           console.error(getErrorMessage(error));
+          this.gettingBalance = false;
         });
     }    
   }
