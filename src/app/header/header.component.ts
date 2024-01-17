@@ -3,6 +3,9 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthenticationService } from '../model/services/authentication.service';
 import { RouteConstants } from '../model/routeConstants';
+import { ApiCallerService } from '../model/services/apiCaller.service';
+import { error } from 'jquery';
+import { getErrorMessage } from '../model/ServerErrors';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +14,9 @@ import { RouteConstants } from '../model/routeConstants';
 })
 export class HeaderComponent implements OnInit, DoCheck {
 
+  balanceValue: number = 0;
 
-  constructor(private router: Router, private authService: AuthenticationService) {
+  constructor(private router: Router, private authService: AuthenticationService, private apiCallerService: ApiCallerService) {
     
   }
   
@@ -62,6 +66,15 @@ export class HeaderComponent implements OnInit, DoCheck {
         this.selectedNavItem = 'Games';
       }
     }
+
+    if (this.isLoggedIn) {
+      this.apiCallerService.getBalance()
+        .subscribe(balance => {
+          this.balanceValue = balance;
+        }, error => {
+          console.error(getErrorMessage(error));
+        });
+    }    
   }
 
   selectedNavItem: string = 'Games'; // Inizializza con il valore predefinito
@@ -94,5 +107,4 @@ printIsLoggedIn(): void {
   }, 2000);
 }
 
-balanceValue: number = 100;
 }
