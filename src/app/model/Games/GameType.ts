@@ -3,5 +3,6 @@ export enum GameType {
     ROULETTE = 'ROULETTE',
     DAILY_SPIN = 'DAILY_SPIN',
     HORSE_RACE = 'HORSE_RACE',
+    GUESS_THE_CARD = 'GUESS_THE_CARD',
     BLACKJACK = 'BLACKJACK'
 }

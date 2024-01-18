@@ -16,6 +16,7 @@ import {HorseRaceComponent} from "./horse-race/horse-race.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {FreeSpinComponent} from "./free-spin/free-spin.component";
 import {BlackjackComponent} from "./blackjack/blackjack.component";
+import {GuessTheCardComponent} from "./guess-the-card/guess-the-card.component";
 
 const routes: Routes = [
   {
@@ -72,6 +73,11 @@ const routes: Routes = [
   {
     component:FreeSpinComponent,
     path: RouteConstants.dailySpin,
+    canActivate: [AuthGuardService]
+  },
+  {
+    component:GuessTheCardComponent,
+    path: RouteConstants.guessTheCard,
     canActivate: [AuthGuardService]
   },
   {

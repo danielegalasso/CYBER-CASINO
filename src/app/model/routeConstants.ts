@@ -11,5 +11,6 @@ export var RouteConstants = {
     roulette: 'roulette',
     stallionSprint: 'stallionSprint',
     profile: 'profile',
+    guessTheCard: 'guessTheCard',
     blackjack: 'blackjack'
 };

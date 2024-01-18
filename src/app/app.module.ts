@@ -29,6 +29,7 @@ import { RouletteComponent } from './roulette/roulette.component';
 import { HorseRaceComponent } from './horse-race/horse-race.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BlackjackComponent } from './blackjack/blackjack.component';
+import { GuessTheCardComponent } from './guess-the-card/guess-the-card.component';
 import {
   NgxAwesomePopupModule,
   DialogConfigModule,
@@ -57,6 +58,7 @@ import {
     HorseRaceComponent,
     ProfileComponent,
     BlackjackComponent,
+    GuessTheCardComponent,
   ],
   imports: [
     BrowserModule,
