@@ -12,9 +12,8 @@ export class BlackjackComponent {
   ngOnInit() {
     const token = this.authService.getTokenValue();
     if (token){ //posso ometterlo in quanto se arriva qua è gia loggato quindi ha il token??
-      const rouletteUrl = `http://localhost:8080/blackjack/blackjack.html?token=${token}`;
-      window.location.href = rouletteUrl;
-      //window.location.href="http://localhost:8080/roulette/javasWheel.html";
+      const blackjackUrl = `http://localhost:8080/guessTheCard/guessTheCard.html?token=${token}`;
+      window.location.href = blackjackUrl;
     }else {
       console.error('Impossibile ottenere il token utente.');
     }
