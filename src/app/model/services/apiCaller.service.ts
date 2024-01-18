@@ -5,8 +5,7 @@ import { GameInformation } from "../Games/GameInformation";
 import { Observable } from "rxjs";
 import { GameResult } from "../Games/GameResult";
 import { AuthenticationService } from "./authentication.service";
-import { SimpleMatch } from "../Games/SimpleMatch";
-import { SimpleTransaction } from "../SimpleTransaction";
+import { LeaderboardMatch } from "../Games/LeaderboardMatch";
 import { Player } from "../Player";
 
 @Injectable({
@@ -23,8 +22,8 @@ export class ApiCallerService {
         return this.http.post<number>(BackendConstants.url + BackendConstants.getBalance,  this.authService.getToken());
     }
 
-    getLatestResultsForLeaderboard(): Observable<SimpleMatch[]> {
-        return this.http.get<SimpleMatch[]>(BackendConstants.url + BackendConstants.getLatestResults);
+    getLatestResultsForLeaderboard(): Observable<LeaderboardMatch[]> {
+        return this.http.get<LeaderboardMatch[]>(BackendConstants.url + BackendConstants.getLatestResults);
     }
 
     getListOfAllUsers(): Observable<Player[]> {
@@ -40,23 +39,5 @@ export class ApiCallerService {
         };
 
         return this.http.post<boolean>(BackendConstants.url + BackendConstants.setUserBan, requestBody);
-    }
-
-    getLatestTransactionsByUser(additionalTransactionsToLoad: number): Observable<SimpleTransaction[]> {
-        const requestBody = {
-            "token": this.authService.getToken().token,
-            "additionalTransactionsToLoad": additionalTransactionsToLoad.toString()
-        };
-
-        return this.http.post<SimpleTransaction[]>(BackendConstants.url + BackendConstants.getLatestTransactionsByUser, requestBody);
-    }
-
-    getLatestGamesResultsByUser(additionalMatchesToLoad: number): Observable<SimpleMatch[]> {
-        const requestBody = {
-            "token": this.authService.getToken().token,
-            "additionalMatchesToLoad": additionalMatchesToLoad.toString()
-        };
-
-        return this.http.post<SimpleMatch[]>(BackendConstants.url + BackendConstants.getLatestGamesResultsByUser, requestBody);
     }
 }

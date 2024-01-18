@@ -111,6 +111,7 @@ export class FreeSpinComponent implements AfterViewInit, DoCheck {
           this.angVel = 0.25;
       },
       error => {
+          console.log(error.error);
           createAlert(getErrorMessage(error.error.message));
           this.spinning = false;
           return;

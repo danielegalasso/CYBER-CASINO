@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SimpleMatch } from '../model/Games/SimpleMatch';
+import { LeaderboardMatch } from '../model/Games/LeaderboardMatch';
 import { ApiCallerService } from '../model/services/apiCaller.service';
 import { getErrorMessage } from '../model/ServerErrors';
 import { createAlert } from '../model/popupCreator';
@@ -32,7 +32,7 @@ export class ComplexImageComponent implements OnInit {
   }
 
 
-  leaderboard: SimpleMatch[] = [
+  leaderboard: LeaderboardMatch[] = [
   ];
 
   ngOnInit() {
