@@ -13,7 +13,9 @@ export class GuessTheCardComponent {
     const token = this.authService.getTokenValue();
     if (token){
       const guessTheCardUrl = `http://localhost:8080/guessTheCard/guessTheCard.html?token=${token}`;
-      window.location.href = guessTheCardUrl;
+      setTimeout(() => {
+        window.location.href = guessTheCardUrl;
+      }, 300);
     }else {
       console.error('Impossibile ottenere il token utente.');
     }

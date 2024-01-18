@@ -36,7 +36,7 @@ export class GamesGridComponent implements OnInit, DoCheck{
     { nome: 'roulette', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 184223.png' },
     { nome: 'stallionSprint', url: '../../assets/GamesCopertine/Screenshot 2024-01-07 194534.png' },
     { nome: 'guessTheCard', url: '../../assets/GamesCopertine/blackjackCopertina.png' },
-    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'blackjack', url: '../../assets/GamesCopertine/blackjackCopertina.png' },
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' }
   ];
@@ -66,6 +66,12 @@ export class GamesGridComponent implements OnInit, DoCheck{
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' }
   ];
 
+  demo = [
+    {nome: 'blackjack', url:'../../assets/GamesCopertine/blackjackCopertina.png'},
+    {nome: 'Empty', url:'../../assets/GamesCopertine/empty.png'},
+    {nome: 'Empty', url:'../../assets/GamesCopertine/empty.png'},
+    ];
+
   immagini = this.allImages;
 
 
@@ -80,9 +86,9 @@ export class GamesGridComponent implements OnInit, DoCheck{
       this.immagini = this.slots;
     } else if (tab == 'OTHER'){
       this.immagini = this.other;
+    } else if (tab == 'DEMO'){
+      this.immagini = this.demo;
     }
-
-
   }
 
 }

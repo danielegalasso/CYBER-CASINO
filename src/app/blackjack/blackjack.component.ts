@@ -10,12 +10,17 @@ export class BlackjackComponent {
   constructor(private authService: AuthenticationService){
   }
   ngOnInit() {
-    const token = this.authService.getTokenValue();
-    if (token){
-      const blackjackUrl = `http://localhost:8080/blackjack/blackjack.html?token=${token}`;
-      window.location.href = blackjackUrl;
-    }else {
-      console.error('Impossibile ottenere il token utente.');
+    const startButton = document.getElementById("start-button");
+    if (startButton){
+      startButton.addEventListener("click", () => {
+        const token = this.authService.getTokenValue();
+        if (token){
+          const blackjackUrl = `http://localhost:8080/blackjack/blackjack.html?token=${token}`;
+          window.location.href = blackjackUrl;
+        }else {
+          console.error('Impossibile ottenere il token utente.');
+        }
+      });
     }
   }
 }
