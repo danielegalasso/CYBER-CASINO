@@ -54,10 +54,10 @@ export class GamesGridComponent implements OnInit, DoCheck{
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' }
   ];
 
-  roulette = [
+  other = [
     { nome: 'roulette', url: '../../assets/GamesCopertine/Screenshot 2023-12-26 184223.png' },
-    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
-    { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
+    { nome: 'stallionSprint', url: '../../assets/GamesCopertine/Screenshot 2024-01-07 194534.png' },
+    { nome: 'blackjack', url: '../../assets/GamesCopertine/blackjackCopertina.png' },
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
     { nome: 'Empty', url: '../../assets/GamesCopertine/empty.png' },
@@ -78,8 +78,8 @@ export class GamesGridComponent implements OnInit, DoCheck{
       this.immagini = this.allImages;
     } else if (tab == 'SLOTS'){
       this.immagini = this.slots;
-    } else if (tab == 'ROULETTE'){
-      this.immagini = this.roulette;
+    } else if (tab == 'OTHER'){
+      this.immagini = this.other;
     }
 
 
