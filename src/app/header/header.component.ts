@@ -1,4 +1,4 @@
-import { Component , OnInit, DoCheck} from '@angular/core';
+import { Component , OnInit, DoCheck, Renderer2, ElementRef} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { AuthenticationService } from '../model/services/authentication.service';
 import { ApiCallerService } from '../model/services/apiCaller.service';
@@ -10,10 +10,7 @@ import { getErrorMessage } from '../model/ServerErrors';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit, DoCheck {
-
-  balanceValue: number = 0;
-
-  constructor(private router: Router, private authService: AuthenticationService, private apiCallerService: ApiCallerService) {
+  constructor(private router: Router, private authService: AuthenticationService, private apiCallerService: ApiCallerService, private renderer: Renderer2, private el: ElementRef) {
     
   }
   
@@ -51,6 +48,21 @@ export class HeaderComponent implements OnInit, DoCheck {
 
     this.printIsLoggedIn();
   }
+
+  toggleNavbar() {
+    const navbar = this.el.nativeElement.querySelector('.navbar-collapse');
+    if (navbar) {
+      if (navbar.classList.contains('show')) {
+        this.renderer.removeClass(navbar, 'show');
+      } else {
+        this.renderer.addClass(navbar, 'show');
+      }
+    }
+  }
+
+  balanceValue: number = 0;
+
+
 
   gettingBalance = false;
   ngDoCheck() {

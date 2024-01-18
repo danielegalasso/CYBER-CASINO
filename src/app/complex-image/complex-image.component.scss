@@ -39,8 +39,8 @@ body{
 /* container */
 .container1 {
 	max-width: 500px;
-	min-width: 370px;
-    width: auto;
+	min-width: 350px;
+    width: 20%;
 	height: auto;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
@@ -51,6 +51,15 @@ body{
     transform: scale(90%);
 	z-index: 1;
 	overflow: hidden;
+}
+/* Responsive - Centra sotto una certa dimensione */
+@media (max-width: 990px) {
+    .container1 {
+        width: 90%;
+        left: 50%;
+        top: 65%;
+        transform: translate(-50%, -50%) scale(0.55);
+    }
 }
 
 /* leaderboard */
