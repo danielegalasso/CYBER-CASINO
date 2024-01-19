@@ -15,7 +15,7 @@ function checkPixelRatio() {
 }
 
 function showAlert() {
-  alert('Il rapporto pixel orizzontale/verticale è inferiore alla soglia!');
+  alert('The horizontal/vertical pixel ratio is below the threshold!');
 }
 
 // Esegui il controllo al caricamento della pagina
