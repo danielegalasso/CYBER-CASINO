@@ -6,6 +6,7 @@ var ErrorsMap = new Map<string, string>([
     ["DAILY_SPIN_ALREADY_USED", "You have already used your daily spin today, come back tomorrow!"],
     ["USER_BANNED", "Your account has been banned! If you think this is a mistake, please contact support"],
     ["USER_NOT_ADMIN", "You are not an admin!"],
+    ["CANNOT_BAN_ADMIN", "You cannot ban an administator!"],
 ]);
 
 export function getErrorMessage(errorCode: string): string {
