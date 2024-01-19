@@ -1,10 +1,9 @@
 import { Component, PipeTransform } from '@angular/core';
-import { AsyncPipe, DecimalPipe } from '@angular/common';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { DecimalPipe } from '@angular/common';
+import { FormControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap';
 import { Player } from '../model/Player';
 import { AuthenticationService } from '../model/services/authentication.service';
 import { ApiCallerService } from '../model/services/apiCaller.service';

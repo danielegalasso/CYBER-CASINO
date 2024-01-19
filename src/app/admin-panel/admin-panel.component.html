@@ -29,7 +29,7 @@
             <ngb-highlight [result]="player.username" [term]="filter.value" />
           </td>
           <td>{{ player.balance }}</td>
-          <td>{{ player.lastSpin }}</td>
+          <td>{{ player.lastDailySpin }}</td>
           <td>
             
             <div *ngIf="player.isBanned == false; else isBanned">   
